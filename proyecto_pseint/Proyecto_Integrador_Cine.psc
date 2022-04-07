@@ -26,10 +26,10 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Definir p1,p2,p3 Como Entero;
 	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
-	Escribir "?Gracias por su confirmaci?n!";
+	Escribir "Gracias por su confirmacion!";
 	Escribir "Los precios de las entradas son los siguientes:";
-	Escribir "MAYORES DE 18 A?OS: $200.";
-	Escribir "MENORES DE 18 A?OS $150";
+	Escribir "MAYORES DE 18 ANOS: $200.";
+	Escribir "MENORES DE 18 ANOS $150";
 	Escribir "";
 	Escribir "A CONTINUACI?N, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
 	Escribir "Opci?n 1: SONIC 2 LA PEL?CULA.";
