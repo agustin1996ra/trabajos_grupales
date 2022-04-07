@@ -12,7 +12,7 @@ SubProceso edad(entradamayores Por Referencia,entradamenores Por Referencia,cant
 	Definir entradas,menores Como Entero;
 	Escribir "Cuantas entradas desea comprar?";
 	Leer entradas; //6
-	Escribir "�Si hay algun menor de edad digite la cantidad!";
+	Escribir "Si hay algun menor de edad digite la cantidad!";
 	Leer menores;//2
 	
 	entradamayores<-entradas-menores;
@@ -26,29 +26,29 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Definir p1,p2,p3 Como Entero;
 	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
-	Escribir "�Gracias por su confirmaci�n!";
+	Escribir "?Gracias por su confirmaci?n!";
 	Escribir "Los precios de las entradas son los siguientes:";
-	Escribir "MAYORES DE 18 A�OS: $200.";
-	Escribir "MENORES DE 18 A�OS $150";
+	Escribir "MAYORES DE 18 A?OS: $200.";
+	Escribir "MENORES DE 18 A?OS $150";
 	Escribir "";
-	Escribir "A CONTINUACI�N, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-	Escribir "Opci�n 1: SONIC 2 LA PEL�CULA.";
-	Escribir "Opci�n 2: R�PIDOS Y FURIOSOS 9";
-	Escribir "Opci�n 3: MORBIUS";
+	Escribir "A CONTINUACI?N, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
+	Escribir "Opci?n 1: SONIC 2 LA PEL?CULA.";
+	Escribir "Opci?n 2: R?PIDOS Y FURIOSOS 9";
+	Escribir "Opci?n 3: MORBIUS";
 	Leer num4;
 	
 	Segun num4 Hacer
 		1:
-			p1<-"Opci�n 1: SONIC 2 LA PEL�CULA";
+			p1<-"Opci?n 1: SONIC 2 LA PEL?CULA";
 			peliculas<-p1;
 		2:
-			p2<-"Opci�n 2: R�PIDOS Y FURIOSOS 9";
+			p2<-"Opci?n 2: R?PIDOS Y FURIOSOS 9";
 			peliculas<-p2;
 		3:
-			p3<-"Opci�n 3: MORBIUS";
+			p3<-"Opci?n 3: MORBIUS";
 			peliculas<-p3;
 		De Otro Modo:
-			Escribir "Opci�n Incorrecta.Por favor, digite nuevamente:";
+			Escribir "Opci?n Incorrecta.Por favor, digite nuevamente:";
 	FinSegun
 	
 	//Escribir "peliculas: ",peliculas;
@@ -66,7 +66,7 @@ SubProceso horario(horas Por Referencia)
 	Repetir
 		Leer jornada;
 		Si jornada<1 O jornada>4 Entonces
-			Escribir Sin Saltar "Opci�n incorrecta. Por favor, digite nuevamente: ";
+			Escribir Sin Saltar "Opci?n incorrecta. Por favor, digite nuevamente: ";
 		FinSi
 	Hasta Que jornada>=1 Y jornada<=4;
 	Segun jornada Hacer
@@ -92,12 +92,12 @@ FinSubProceso
 Proceso CINE
 	Definir opcion Como Entero;
 	Definir vendido Como Logico;
-	Escribir "�BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
+	Escribir "?BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
 	Escribir "";
 	Repetir
 		vendido<-falso;
 		
-		Escribir "SELECCIONE QUE OPERACI�N DESEA REALIZAR:";
+		Escribir "SELECCIONE QUE OPERACI?N DESEA REALIZAR:";
 		Escribir "";
 		Escribir "1. COMPRAR UNA ENTRADA. ";
 		Escribir "2. VER CARTELERA. ";
@@ -122,7 +122,7 @@ Proceso CINE
 				Dimension butnum(100);
 				Limpiar Pantalla;
 				Escribir "";
-				Escribir "Por favor, seleccione la posici�n de la butaca:";
+				Escribir "Por favor, seleccione la posici?n de la butaca:";
 				Escribir "";
 				Para i<-0 Hasta 4 Con Paso 1 Hacer
 					Para j<-0 Hasta 9 Con Paso 1 Hacer
@@ -137,7 +137,7 @@ Proceso CINE
 					Leer butnum(m);
 				FinPara
 				Limpiar Pantalla;
-				Escribir "Usted est� por comprar la entrada de: ";
+				Escribir "Usted est? por comprar la entrada de: ";
 				Escribir " ";
 				Escribir "",peliculas, " .";;
 				Escribir "";
@@ -147,34 +147,34 @@ Proceso CINE
 				Escribir " ";
 				
 				Para m<-0 Hasta cantidadentradas-1 Hacer
-					Escribir "En la butacas N�: ",butnum(m);
+					Escribir "En la butacas N?: ",butnum(m);
 				FinPara
 				Escribir "";
 				Repetir
-					Escribir "�Desea confirmar la compra?";
-					Escribir "Opci�n 1: S�.";
-					Escribir "Opci�n 2: NO.";
+					Escribir "?Desea confirmar la compra?";
+					Escribir "Opci?n 1: S?.";
+					Escribir "Opci?n 2: NO.";
 					Leer opc;
 				Hasta Que opc=1 o opc=2
 				Segun opc Hacer
 					1:
 						Limpiar Pantalla;
-						Escribir "�GRACIAS POR SU COMPRA!";
+						Escribir "?GRACIAS POR SU COMPRA!";
 						vendido <- verdadero;
 					2: 
 						Limpiar Pantalla;
 						Escribir "LO SENTIMOS. SU COMPRA NO PUDO REALIZARSE.";
 						vendido <- Verdadero;
 					De Otro Modo:
-						Escribir "OPCI�N INCORRECTA.";
+						Escribir "OPCI?N INCORRECTA.";
 				FinSegun
 			2:
 				Limpiar Pantalla;
 				
 				Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-				Escribir "Opci�n 1: SONIC 2 LA PEL�CULA";
-				Escribir "Opci�n 2: R�PIDOS Y FURIOSOS 9";
-				Escribir "Opci�n 3: MORBIUS";
+				Escribir "Opci?n 1: SONIC 2 LA PEL?CULA";
+				Escribir "Opci?n 2: R?PIDOS Y FURIOSOS 9";
+				Escribir "Opci?n 3: MORBIUS";
 				Escribir " ";
 				Escribir " ";
 			3:
