@@ -65,7 +65,7 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Escribir "peliculas: ",peliculas;
 FinSubProceso
 
-
+//Escribir "hora seleccionada: ",horas;
 SubProceso horario(horas Por Referencia)
 	Definir jornada Como Entero;
 	Definir j1,j2,j3,j4 Como Caracter;
@@ -97,7 +97,7 @@ SubProceso horario(horas Por Referencia)
 		De Otro Modo:
 			Escribir "Por favor, digite nuevamente";
 	FinSegun
-	//Escribir "hora seleccionada: ",horas;
+	
 FinSubProceso
 
 
