@@ -1,6 +1,6 @@
 
 //Este subproceso clacula el valor total a pagar por las entradas seleccionadas
-// teniendo en cuenta las diferentes categorias segun edades
+// teniendo en cuenta las diferentes categorias segun las edades
 subProceso tarifa(precio Por Referencia,entradamayores,entradamenores)
 	definir entradas Como Entero;
 	Definir preciomayor,preciomenor Como Entero;
