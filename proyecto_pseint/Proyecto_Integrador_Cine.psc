@@ -38,40 +38,18 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	Escribir "MAYORES DE 18 ANOS: $200.";
 	Escribir "MENORES DE 18 ANOS $150";
 	Escribir "";
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
+
 	Escribir "A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
 	Escribir "Opcion 1: SONIC 2 LA PELICULA.";
 	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 	Escribir "Opcion 3: MORBIUS";
-=======
->>>>>>> Stashed changes
-	Escribir "A CONTINUACI?N, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-	Escribir "Opci?n 1: SONIC 2 LA PEL?CULA.";
-	Escribir "Opci?n 2: R?PIDOS Y FURIOSOS 9";
-	Escribir "Opci?n 3: MORBIUS";
-<<<<<<< Updated upstream
-=======
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
+
+
 	Leer num4;
 	
 	Segun num4 Hacer
 		1:
-<<<<<<< Updated upstream
-			p1<-"Opci?n 1: SONIC 2 LA PEL?CULA";
-			peliculas<-p1;
-		2:
-			p2<-"Opci?n 2: R?PIDOS Y FURIOSOS 9";
-			peliculas<-p2;
-		3:
-			p3<-"Opci?n 3: MORBIUS";
-			peliculas<-p3;
-		De Otro Modo:
-			Escribir "Opci?n Incorrecta.Por favor, digite nuevamente:";
-=======
-<<<<<<< HEAD
 			p1<-"Opcion 1: SONIC 2 LA PELICULA";
 			peliculas<-p1;
 		2:
@@ -82,19 +60,6 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 			peliculas<-p3;
 		De Otro Modo:
 			Escribir "Opcion Incorrecta.Por favor, digite nuevamente:";
-=======
-			p1<-"Opci?n 1: SONIC 2 LA PEL?CULA";
-			peliculas<-p1;
-		2:
-			p2<-"Opci?n 2: R?PIDOS Y FURIOSOS 9";
-			peliculas<-p2;
-		3:
-			p3<-"Opci?n 3: MORBIUS";
-			peliculas<-p3;
-		De Otro Modo:
-			Escribir "Opci?n Incorrecta.Por favor, digite nuevamente:";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 	FinSegun
 	
 	//Escribir "peliculas: ",peliculas;
@@ -113,15 +78,7 @@ SubProceso horario(horas Por Referencia)
 	Repetir
 		Leer jornada;
 		Si jornada<1 O jornada>4 Entonces
-<<<<<<< Updated upstream
-			Escribir Sin Saltar "Opci?n incorrecta. Por favor, digite nuevamente: ";
-=======
-<<<<<<< HEAD
 			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
-=======
-			Escribir Sin Saltar "Opci?n incorrecta. Por favor, digite nuevamente: ";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 		FinSi
 	Hasta Que jornada>=1 Y jornada<=4;
 	Segun jornada Hacer
@@ -147,28 +104,12 @@ FinSubProceso
 Proceso CINE
 	Definir opcion Como Entero;
 	Definir vendido Como Logico;
-<<<<<<< Updated upstream
-	Escribir "?BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
-=======
-<<<<<<< HEAD
 	Escribir "BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
-=======
-	Escribir "?BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 	Escribir "";
 	Repetir
 		vendido<-falso;
 		
-<<<<<<< Updated upstream
-		Escribir "SELECCIONE QUE OPERACI?N DESEA REALIZAR:";
-=======
-<<<<<<< HEAD
 		Escribir "SELECCIONE QUE OPERACION DESEA REALIZAR:";
-=======
-		Escribir "SELECCIONE QUE OPERACI?N DESEA REALIZAR:";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 		Escribir "";
 		Escribir "1. COMPRAR UNA ENTRADA. ";
 		Escribir "2. VER CARTELERA. ";
@@ -198,15 +139,7 @@ Proceso CINE
 				Dimension butnum(100);
 				Limpiar Pantalla;
 				Escribir "";
-<<<<<<< Updated upstream
-				Escribir "Por favor, seleccione la posici?n de la butaca:";
-=======
-<<<<<<< HEAD
 				Escribir "Por favor, seleccione la posicion de la butaca:";
-=======
-				Escribir "Por favor, seleccione la posici?n de la butaca:";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 				Escribir "";
 				Para i<-0 Hasta 4 Con Paso 1 Hacer
 					Para j<-0 Hasta 9 Con Paso 1 Hacer
@@ -221,15 +154,7 @@ Proceso CINE
 					Leer butnum(m);
 				FinPara
 				Limpiar Pantalla;
-<<<<<<< Updated upstream
-				Escribir "Usted est? por comprar la entrada de: ";
-=======
-<<<<<<< HEAD
 				Escribir "Usted esta por comprar la entrada de: ";
-=======
-				Escribir "Usted est? por comprar la entrada de: ";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 				Escribir " ";
 				Escribir "",peliculas, " .";;
 				Escribir "";
@@ -239,9 +164,6 @@ Proceso CINE
 				Escribir " ";
 				
 				Para m<-0 Hasta cantidadentradas-1 Hacer
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 					Escribir "En la butacas Numero: ",butnum(m);
 				FinPara
 				Escribir "";
@@ -249,68 +171,26 @@ Proceso CINE
 					Escribir "Desea confirmar la compra?";
 					Escribir "Opcion 1: SI.";
 					Escribir "Opcion 2: NO.";
-=======
->>>>>>> Stashed changes
-					Escribir "En la butacas N?: ",butnum(m);
-				FinPara
-				Escribir "";
-				Repetir
-					Escribir "?Desea confirmar la compra?";
-					Escribir "Opci?n 1: S?.";
-					Escribir "Opci?n 2: NO.";
-<<<<<<< Updated upstream
-=======
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 					Leer opc;
 				Hasta Que opc=1 o opc=2
 				Segun opc Hacer
 					1:
 						Limpiar Pantalla;
-<<<<<<< Updated upstream
-						Escribir "?GRACIAS POR SU COMPRA!";
-=======
-<<<<<<< HEAD
-						Escribir "GRACIAS POR SU COMPRA!";
-=======
-						Escribir "?GRACIAS POR SU COMPRA!";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 						vendido <- verdadero;
 					2: 
 						Limpiar Pantalla;
 						Escribir "LO SENTIMOS. SU COMPRA NO PUDO REALIZARSE.";
 						vendido <- Verdadero;
 					De Otro Modo:
-<<<<<<< Updated upstream
-						Escribir "OPCI?N INCORRECTA.";
-=======
-<<<<<<< HEAD
 						Escribir "OPCION INCORRECTA.";
-=======
-						Escribir "OPCI?N INCORRECTA.";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 				FinSegun
 			2:
 				Limpiar Pantalla;
 				
 				Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-<<<<<<< Updated upstream
-				Escribir "Opci?n 1: SONIC 2 LA PEL?CULA";
-				Escribir "Opci?n 2: R?PIDOS Y FURIOSOS 9";
-				Escribir "Opci?n 3: MORBIUS";
-=======
-<<<<<<< HEAD
 				Escribir "Opcion 1: SONIC 2 LA PELICULA";
 				Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 				Escribir "Opcion 3: MORBIUS";
-=======
-				Escribir "Opci?n 1: SONIC 2 LA PEL?CULA";
-				Escribir "Opci?n 2: R?PIDOS Y FURIOSOS 9";
-				Escribir "Opci?n 3: MORBIUS";
->>>>>>> b16328516fddeb4e08d0e2a454bc85339c5e74d5
->>>>>>> Stashed changes
 				Escribir " ";
 				Escribir " ";
 			3:
