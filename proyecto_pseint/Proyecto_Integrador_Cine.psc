@@ -5,9 +5,13 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores)
 	definir entradas Como Entero;
 	Definir preciomayor,preciomenor Como Entero;
 	Limpiar Pantalla;
+	//Calcula el total del precio de los mayores del grupo
 	preciomayor<-entradamayores*200;
+	//Calcula el totlal del precio de los menores del grupo
 	preciomenor<-entradamenores*150;
+	//Calcula el precio total
 	precio<-preciomayor+preciomenor;
+	//Muestra en consola el precio total a pagar por las entradas seleccionadas
 	Escribir "Con un costo de $ ",precio;
 FinSubProceso
 
@@ -16,12 +20,14 @@ FinSubProceso
 SubProceso edad(entradamayores Por Referencia,entradamenores Por Referencia,cantidadentradas Por Referencia)
 	Definir entradas,menores Como Entero;
 	Escribir "Cuantas entradas desea comprar?";
-	Leer entradas; //6
+	Leer entradas; //Lee el valor total del numero de entradas
 	Escribir "Si hay algun menor de edad digite la cantidad!";
-	Leer menores;//2
-	
+	Leer menores;//Lee el valor del numero de menores en el total de entradas
+	//Calcula la cantidad de entradas para los mayores del grupo
 	entradamayores<-entradas-menores;
+	//Asigna el valor de la cantidad de entradas para los menores del grupo
 	entradamenores<-menores;
+	//Calcula el total de las entradas
 	cantidadentradas<-entradamayores+entradamenores;
 FinSubProceso
 
@@ -45,15 +51,15 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 	Escribir "Opcion 3: MORBIUS";
 
-
+	//Num4 es un selector
 	Leer num4;
-	
+	// segun el valor de num4 se almacena el valor de la pelicula seleccionada en la variable peliculas
 	Segun num4 Hacer
 		1:
 			p1<-"Opcion 1: SONIC 2 LA PELICULA";
 			peliculas<-p1;
 		2:
-			p2<-"Opcion 2: R?PIDOS Y FURIOSOS 9";
+			p2<-"Opcion 2: RAPIDOS Y FURIOSOS 9";
 			peliculas<-p2;
 		3:
 			p3<-"Opcion 3: MORBIUS";
@@ -65,8 +71,9 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Escribir "peliculas: ",peliculas;
 FinSubProceso
 
-//Escribir "hora seleccionada: ",horas;
+
 SubProceso horario(horas Por Referencia)
+// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
 	Definir jornada Como Entero;
 	Definir j1,j2,j3,j4 Como Caracter;
 	Limpiar Pantalla;
@@ -76,11 +83,14 @@ SubProceso horario(horas Por Referencia)
 	Escribir "    3.- 7:00 pm.";
 	Escribir "    4.- 9:00 pm.";
 	Repetir
+		// jornada es un selector
 		Leer jornada;
 		Si jornada<1 O jornada>4 Entonces
 			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
 		FinSi
 	Hasta Que jornada>=1 Y jornada<=4;
+	
+	// Segun el valor jornada se almacena el dato de cual fue el horario de la proyeccion en la variable "horas"
 	Segun jornada Hacer
 		1:
 			j1<-"3:00 pm.";
@@ -102,6 +112,10 @@ FinSubProceso
 
 
 Proceso CINE
+	//Este programa tiene la funcion de dar las opciones de proyeccion de un cine, al ususario
+	// Teniendo en cuenta la pelicula, el horario, la cantidad de espectadores del grupo,
+	// y si estos son menores tendran un precio diferido.
+	// Le informara al usuario un resumen de su eleccion y luego le ofrecera pagar el monto total.
 	Definir opcion Como Entero;
 	Definir vendido Como Logico;
 	Escribir "BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
@@ -119,6 +133,7 @@ Proceso CINE
 		
 		Segun opcion Hacer
 			1:
+				//En esta opcion el usuario elijira la pelicula, el horario de proyeccion y ingresara cuanto mayore y menores veran la pelicula
 				Definir peliculas Como Caracter;
 				Definir precio,i,j,m,butnum Como Entero;
 				Definir horas Como Caracter;
@@ -126,15 +141,17 @@ Proceso CINE
 				Definir venta como entero;
 				definir opc Como Entero;
 				Definir cantidadentradas,entradamayores,entradamenores Como Entero;
-				
+				//Llamada al subproceso edad, donde se diran cuantas entradas se desea comprar y cuantos menores hay en el grupo
 				edad(entradamayores,entradamenores,cantidadentradas);
-				
+				//El subproceso tarifa calculara el precio total de las entradas
 				tarifa(precio,entradamayores,entradamenores);
-				
+				// El subproceso cartillapeliculas le mostrara al usuario que pelicualas hay disponibles y tomara el dato de que pelicula desea ver
 				cartillapeliculas(peliculas);
-				
+				// El subproceso horario tomara el dato de que horario de proyeccion elije el usuario 
 				horario(horas);
 				
+				
+				//Aqui se le pedira al usuario que elija la numaracion de las entradas
 				Dimension butaca[5,10];
 				Dimension butnum(100);
 				Limpiar Pantalla;
@@ -153,7 +170,10 @@ Proceso CINE
 				Para m<-0 Hasta cantidadentradas-1 Hacer
 					Leer butnum(m);
 				FinPara
+				
+				
 				Limpiar Pantalla;
+				//Aqui se mostrara el resumen de la eleccion del usuario 
 				Escribir "Usted esta por comprar la entrada de: ";
 				Escribir " ";
 				Escribir "",peliculas, " .";;
@@ -167,6 +187,7 @@ Proceso CINE
 					Escribir "En la butacas Numero: ",butnum(m);
 				FinPara
 				Escribir "";
+				//Aqui se le preguntara al usuario si esta de acuerdo con lo quedice el resumen de su eleccion
 				Repetir
 					Escribir "Desea confirmar la compra?";
 					Escribir "Opcion 1: SI.";
@@ -185,6 +206,7 @@ Proceso CINE
 						Escribir "OPCION INCORRECTA.";
 				FinSegun
 			2:
+				//En esta opcion se deplegara al ususario en consola las peliculas disponibles
 				Limpiar Pantalla;
 				
 				Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
