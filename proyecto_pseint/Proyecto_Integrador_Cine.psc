@@ -36,46 +36,43 @@ FinSubProceso
 // de que pelicula vera el grupo
 SubProceso cartillapeliculas(peliculas Por Referencia)
 	Definir num4 Como Entero;
-	//Definir p1,p2,p3 Como Entero;
-	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
 	Escribir "Gracias por su confirmacion!";
 	Escribir "Los precios de las entradas son los siguientes:";
 	Escribir "MAYORES DE 18 ANOS: $200.";
 	Escribir "MENORES DE 18 ANOS $150";
 	Escribir "";
-
-
+	
+	
 	Escribir "A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
 	Escribir "Opcion 1: SONIC 2 LA PELICULA.";
 	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 	Escribir "Opcion 3: MORBIUS";
-
-	//Num4 es un selector
-	Leer num4;
-	// segun el valor de num4 se almacena el valor de la pelicula seleccionada en la variable peliculas
-	Segun num4 Hacer
-		1:
-			p1<-"Opcion 1: SONIC 2 LA PELICULA";
-			peliculas<-p1;
-		2:
-			p2<-"Opcion 2: RAPIDOS Y FURIOSOS 9";
-			peliculas<-p2;
-		3:
-			p3<-"Opcion 3: MORBIUS";
-			peliculas<-p3;
-		De Otro Modo:
-			Escribir "Opcion Incorrecta.Por favor, digite nuevamente:";
-	FinSegun
 	
-	//Escribir "peliculas: ",peliculas;
+	Repetir
+		//Num4 es un selector
+		Leer num4;
+		Si num4<1 O num4>3 Entonces
+			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// segun el valor de "num4" se almacena el valor de la pelicula seleccionada en la variable "peliculas"
+			Segun num4 Hacer
+				1:
+					peliculas<-"Opcion 1: SONIC 2 LA PELICULA";
+				2:
+					peliculas<-"Opcion 2: RAPIDOS Y FURIOSOS 9";
+				3:
+					peliculas<-"Opcion 3: MORBIUS";
+			FinSegun
+		FinSi
+	Hasta Que num4>=1 Y num4<=3;
+	
 FinSubProceso
 
 
 SubProceso horario(horas Por Referencia)
-// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
+	// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
 	Definir jornada Como Entero;
-	Definir j1,j2,j3,j4 Como Caracter;
 	Limpiar Pantalla;
 	Escribir "Por favor, seleccione el horario en el que desea asistir:";
 	Escribir "    1.- 3:00 pm.";
@@ -87,27 +84,20 @@ SubProceso horario(horas Por Referencia)
 		Leer jornada;
 		Si jornada<1 O jornada>4 Entonces
 			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// Segun el valor jornada se almacena el dato de cual fue el horario de la proyeccion en la variable "horas"
+			Segun jornada Hacer
+				1:
+					horas<-"3:00 pm.";
+				2:
+					horas<-"5:00 pm.";
+				3:
+					horas<-"7:00 pm.";
+					4
+					horas<-"9:00 pm.";
+			FinSegun
 		FinSi
 	Hasta Que jornada>=1 Y jornada<=4;
-	
-	// Segun el valor jornada se almacena el dato de cual fue el horario de la proyeccion en la variable "horas"
-	Segun jornada Hacer
-		1:
-			j1<-"3:00 pm.";
-			horas<-j1;
-		2:
-			j2<-"5:00 pm.";
-			horas<-j2;
-		3:
-			j3<-"7:00 pm.";
-			horas<-j3;
-		4:
-			j4<-"9:00 pm.";
-			horas<-j4;
-		De Otro Modo:
-			Escribir "Por favor, digite nuevamente";
-	FinSegun
-	
 FinSubProceso
 
 
