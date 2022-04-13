@@ -93,7 +93,7 @@ SubProceso horario(horas Por Referencia)
 					horas<-"5:00 pm.";
 				3:
 					horas<-"7:00 pm.";
-					4
+				4:
 					horas<-"9:00 pm.";
 			FinSegun
 		FinSi
@@ -125,7 +125,8 @@ Proceso CINE
 			1:
 				//En esta opcion el usuario elijira la pelicula, el horario de proyeccion y ingresara cuanto mayore y menores veran la pelicula
 				Definir peliculas Como Caracter;
-				Definir precio,i,j,m,butnum Como Entero;
+				Definir v Como Logico;
+				Definir precio,i,j,m,butnum,m1 Como Entero;
 				Definir horas Como Caracter;
 				Definir butaca Como Entero;
 				Definir venta como entero;
@@ -141,7 +142,7 @@ Proceso CINE
 				horario(horas);
 				
 				
-				//Aqui se le pedira al usuario que elija la numaracion de las entradas
+				// Se despliega la matriz de la numeracion de las butacas
 				Dimension butaca[5,10];
 				Dimension butnum(100);
 				Limpiar Pantalla;
@@ -157,8 +158,33 @@ Proceso CINE
 				FinPara
 				Escribir "";
 				
+				
+				//Aqui se le pedira al usuario que elija la numaracion de las entradas
 				Para m<-0 Hasta cantidadentradas-1 Hacer
-					Leer butnum(m);
+					Repetir
+						v <- Verdadero;
+						Leer m1;
+						
+						Si m1 < 0 O m1 > 49  Entonces
+							// Se salva el error de que el numero ingrsado este fuera de rango
+							v <- Falso;
+							Escribir "El valor ingresado esta fuera de rango, por favor vuelva a ingrasar";
+						SiNo
+							Si m <> 0 Entonces
+								Para i <- 0 Hasta m-1 Con Paso 1 Hacer
+									Si butnum(i) = m1 Entonces
+										// Se salva el error de que el numero este repetido
+										v <- Falso;
+										Escribir "El valor ingresado esta repetido, por favor vuelva a ingresar";
+									FinSi
+								FinPara
+							FinSi
+						FinSi
+						
+						Si v = Verdadero Entonces
+							butnum(m) <- m1;
+						FinSi
+					Hasta Que v = Verdadero
 				FinPara
 				
 				
@@ -183,6 +209,9 @@ Proceso CINE
 					Escribir "Opcion 1: SI.";
 					Escribir "Opcion 2: NO.";
 					Leer opc;
+					Si opc < 1 O opc > 2 Entonces
+						Escribir "La opcion ingresada es incorrecta";
+					FinSi
 				Hasta Que opc=1 o opc=2
 				Segun opc Hacer
 					1:
