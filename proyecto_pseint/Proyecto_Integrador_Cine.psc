@@ -108,7 +108,7 @@ Proceso CINE
 	// Le informara al usuario un resumen de su eleccion y luego le ofrecera pagar el monto total.
 	Definir opcion Como Entero;
 	Definir vendido Como Logico;
-	Escribir "BIENVENIDO/A AL MEJOR CINE DE MENDOZA!";
+	Escribir "            BIENVENIDO/AD AL CINE DE LOS/AS MATE-CODERS!!!";
 	Escribir "";
 	Repetir
 		vendido<-falso;
@@ -188,10 +188,24 @@ Proceso CINE
 					1:
 						Limpiar Pantalla;
 						vendido <- verdadero;
+						Escribir "        ¡¡¡Gracias por su compra!!!";
+						Escribir "";
+						Escribir "              ¡Los/as esperamos!";
+						Escribir "";
+						Escribir "           *-FACUNDO MARTÍN GIACOMOZZI-*  ";
+						Escribir "           *-MATÍAS CANEVARO*   ";
+						Escribir "           *-MARTÍN ALEJANDRO TORRES-* ";
+						Escribir "           *-EDUARDO LUIS GÓMEZ-*";
+						Escribir "           *-CINTHIA FERNANDA SEGOVIA-*";
+						Escribir "           *-GABRIEL ROMERO-* ";
+						Escribir "           *-AGUSTIN RODRIGUEZ ALVAREZ-* ";
+						Escribir "           *-LAUTARO URQUIZA-* ";
+						Escribir "           *-FEDERICO PFUND-* ";
+						Escribir "           *-SABRINA MANTERO-* ";
 					2: 
 						Limpiar Pantalla;
 						Escribir "LO SENTIMOS. SU COMPRA NO PUDO REALIZARSE.";
-						vendido <- Verdadero;
+						vendido <- Falso;
 					De Otro Modo:
 						Escribir "OPCION INCORRECTA.";
 				FinSegun
