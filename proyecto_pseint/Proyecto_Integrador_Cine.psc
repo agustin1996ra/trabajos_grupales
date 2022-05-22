@@ -1,18 +1,22 @@
 
+
 //Este subproceso clacula el valor total a pagar por las entradas seleccionadas
 // teniendo en cuenta las diferentes categorias segun las edades
 subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidadentradas)
-	Definir CalculoDescuento,preciomayor, preciomenor Como Real;
-	definir entradas, Edades, i Como Entero;
-	Definir  AcumPerdidas, AcumPerdidasC3, AcumPerdidasC4, AcumPerdidasC5 Como Real; 
+	Definir CalculoDescuento,PrecioAdulto, PrecioMenores Como Entero;
+	definir Edades, i, preciomayor,preciomenor Como Entero;
+	Definir AcumPerdidas, AcumPerdidasC3, AcumPerdidasC4, AcumPerdidasC5 Como Entero; 
 	Definir menor Como Logico;
 	Limpiar Pantalla;
 	menor<-Falso;
 	si entradamenores >0 Entonces
 		menor<-Verdadero;
 	FinSi
-	
-	
+	//inicializamos las variable con un valor 
+	AcumPerdidas<-0;
+	AcumPerdidasC3<-0;
+	AcumPerdidasC4<-0;
+	AcumPerdidasC5<-0; 
 	//Calcula el total del precio de los mayores del grupo
 	preciomayor<-entradamayores*200;
 	//Calcula el totlal del precio de los menores del grupo
@@ -29,7 +33,8 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 			
 			Escribir ('Digite las edades de los menores: '),(i+1),(':');
 			Leer Edades;
-				
+			// verificacion de que no sea menor a 5 años de edad en caso de que haya un niño menor de edad se le mostrara un mensaje 
+			// este condicional muestra un mensaje en caso de que asista un menor de edad.
 			si (Edades<5) Entonces
 				Escribir ('****************************************************************************************************************************************************');
 				Escribir ('*                                                         Lo sentimos, niños menores a 5 años                                                      *');
@@ -37,41 +42,33 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 				Escribir ('****************************************************************************************************************************************************');
 				Esperar 2 Segundos;
 				Limpiar Pantalla;
-					
+				
 			Finsi
-					
-					// CATEGORIA 1
-			Si Edades > 5 y Edades <= 18 Entonces
-				CalculoDescuento <- preciomenor*0.3333;//50
-				AcumPerdidas <- preciomenor-CalculoDescuento;
-			FinSi
 			
+			// CATEGORIA 1
+			Si Edades > 5 y Edades <= 18 Entonces
+				CalculoDescuento <- preciomenor*0.4;//50
+				AcumPerdidas <- preciomenor-CalculoDescuento;
+				Escribir AcumPerdidas;
+			FinSi
+		SiNo
+			Si (Edades >=19 Y Edades <= 45) Entonces
+				AcumPerdidasC3 <- preciomayor;
+			SiNo
+				// CATEGORIA 4
+				Si (Edades >= 46 Y Edades <= 65) Entonces
+					CalculoDescuento <-preciomayor*0.10;
+					AcumPerdidasC4 <- preciomayor-CalculoDescuento;
+					
+				SiNo
+					// CATEGORIA 5
+					CalculoDescuento <- preciomayor*0.50;
+					AcumPerdidasC5 <- preciomayor-CalculoDescuento;
+					
+				FinSi // FIN SI CATEGORIA 3
+			FinSi // FIN SI CATEGORIA 2
 			
 		FinSi
-			// verificacion de que no sea menor a 5 años de edad en caso de que haya un niño menor de edad se le mostrara un mensaje 
-			
-			// este condicional muestra un mensaje en caso de que asista un menor de edad.
-			
-		
-		
-		// CATEGORIA 3
-		Si (Edades >=19 Y Edades <= 45) Entonces
-			AcumPerdidasC3 <- preciomayor;
-		SiNo
-			// CATEGORIA 4
-			Si (Edades >= 46 Y Edades <= 65) Entonces
-				CalculoDescuento <-preciomayor*0.10;
-				AcumPerdidasC4 <- preciomayor-CalculoDescuento;
-				
-			SiNo
-				// CATEGORIA 5
-				CalculoDescuento <- preciomayor*0.50;
-				AcumPerdidasC5 <- preciomayor-CalculoDescuento;
-					
-			FinSi // FIN SI CATEGORIA 3
-		FinSi // FIN SI CATEGORIA 2
-		 // FIN SI CATEGORIA 1
-		
 		i <- i+1;
 	FinMientras
 	Escribir ('-------------------------------------------------------------------------------------------------------------');
@@ -80,15 +77,15 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 	Escribir " ";
 	Escribir ('-                                          INFORME A DETALLE DE PERDIDAS:                                    ');
 	Escribir " ";
-
 	
-
+	
+	
 	//Calcula el total del precio de los mayores del grupo
-	preciomayor<- AcumPerdidasC3+AcumPerdidasC4+AcumPerdidasC5;
+	PrecioAdulto<- AcumPerdidasC3+AcumPerdidasC4+AcumPerdidasC5;
 	//Calcula el totlal del precio de los menores del grupo
-	preciomenor<-AcumPerdidasC1;
+	PrecioMenor<-AcumPerdidas;
 	//Calcula el precio total
-	precio<-preciomayor+preciomenor;
+	precio<-PrecioAdulto+PrecioMenor;
 	//Muestra en consola el precio total a pagar por las entradas seleccionadas
 	Escribir "Costo total $ ",precio;
 FinSubProceso
@@ -105,7 +102,7 @@ SubProceso edad(entradamayores Por Referencia,entradamenores Por Referencia,cant
 	Escribir "Si hay algun menor de edad digite la cantidad";
 	Leer menores;//Lee el valor del numero de menores en el total de entradas
 	//en caso de que sea haya un menor, dicho condicional asignara a a varible menor verdadero
-
+	
 	//Calcula la cantidad de entradas para los mayores del grupo
 	entradamayores<-entradas-menores;
 	//Asigna el valor de la cantidad de entradas para los menores del grupo
@@ -127,13 +124,13 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	Escribir "MAYORES DE 18 ANOS: $200.";
 	Escribir "MENORES DE 18 ANOS $150";
 	Escribir "";
-
-
+	
+	
 	Escribir "A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
 	Escribir "Opcion 1: SONIC 2 LA PELICULA.";
 	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 	Escribir "Opcion 3: MORBIUS";
-
+	
 	//Num4 es un selector
 	Leer num4;
 	// segun el valor de num4 se almacena el valor de la pelicula seleccionada en la variable peliculas
@@ -157,7 +154,7 @@ FinSubProceso
 
 
 SubProceso horario(horas Por Referencia)
-// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
+	// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
 	Definir jornada Como Entero;
 	Definir j1,j2,j3,j4 Como Caracter;
 	Limpiar Pantalla;
@@ -198,7 +195,7 @@ SubProceso animacion
 	Definir i Como Entero;
 	Definir string Como Caracter;
 	string<-"Procesando su pedido";
-
+	
 	Para i<-0 Hasta Longitud(string)  Con Paso 1 Hacer
 		si i=Longitud(string)  Entonces
 			Limpiar Pantalla;
@@ -226,7 +223,7 @@ SubProceso animacion
 			Escribir "                                                                                                                                                        ";
 			
 		FinSi
-			
+		
 		esperar 1 Segundos;
 		
 	FinPara
@@ -234,18 +231,18 @@ SubProceso animacion
 FinSubProceso
 
 SubAlgoritmo Bienvenido
-	Escribir ('--------------------------------------------------------------------------------------------------------------------------------------------------------------------');
-	Escribir "|                                                                     *** ¡BIENVENIDO/A AL MEJOR CINE DE MENDOZA! ***                                                |";
-	Escribir ('--------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+	Escribir ('                                              -------------------------------------------------------------------------------------------                         ');
+	Escribir "                                                                     *** ¡BIENVENIDO/A AL MEJOR CINE DE MENDOZA! ***                                               ";
+	Escribir ('                                                            -----------------------------------------------------------------                                     ');
 	Escribir " ";
 	Esperar 5 Segundos;
 FinSubAlgoritmo
 
 SubAlgoritmo Mensaje
-	Escribir ' ----------------------------------------------------------------------------------------------------------------------------------------------------------------------';
-	Escribir "|                                        ¡El cine es un bien cultural, un medio de expresión artística, un hecho de comunicación social,                              |";
-	Escribir "|                                                   una industria, un objeto de comercio, enseñanza, estudio e investigación.!                                        |";
-	Escribir '|----------------------------------------------------------------------------------------------------------------------------------------------------------------------';
+	Escribir '                                      ---------------------------------------------------------------------------------------------------------                      ';
+	Escribir "                                        ¡El cine es un bien cultural, un medio de expresión artística, un hecho de comunicación social,                              ";
+	Escribir "                                                   una industria, un objeto de comercio, enseñanza, estudio e investigación.!                                        ";
+	Escribir '                                                 ---------------------------------------------------------------------------------                                    ';
 	Escribir "";
 	
 	Esperar 5 Segundos;
@@ -273,9 +270,9 @@ SubAlgoritmo Cartelera
 FinSubAlgoritmo
 
 SubAlgoritmo continuar_salir
-	Escribir "------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-	Escribir " ------------------------------| Opcion 1: (Continuar)   |-----------------------------------------------------------|  Opcion 2: (Salir)   |---------------------------";	
-	Escribir "------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+	Escribir "                                -------------------------                                                             ----------------------                           ";
+	Escribir "                               | Opcion 1: (Continuar)   |                                                           |  Opcion 2: (Salir)   |                          ";	
+	Escribir "                                -------------------------                                                             ----------------------                           ";
 FinSubAlgoritmo
 Proceso CINE
 	//Este programa tiene la funcion de dar las opciones de proyeccion de un cine, al ususario
@@ -404,4 +401,5 @@ Proceso CINE
 		FinSegun
 		
 	Hasta Que opcion=3 o vendido=verdadero
+	Escribir "                                                 Gracias por elejirnos!! los esperamos pronto";
 FinProceso
