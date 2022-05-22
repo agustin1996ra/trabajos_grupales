@@ -3,91 +3,77 @@
 //Este subproceso clacula el valor total a pagar por las entradas seleccionadas
 // teniendo en cuenta las diferentes categorias segun las edades
 subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidadentradas)
-	Definir CalculoDescuento,PrecioAdulto, PrecioMenores Como Entero;
-	definir Edades, i, preciomayor,preciomenor Como Entero;
-	Definir AcumPerdidas, AcumPerdidasC3, AcumPerdidasC4, AcumPerdidasC5 Como Entero; 
-	Definir menor Como Logico;
+	Definir Descuento Como Entero;
+	definir Edades, i, preciomayor,preciomenor,Suma Como Entero;
+	Definir MatrizPrecio,MatrizDescuento Como Entero; 
+	Dimension  MatrizPrecio[100];
+	Dimension  MatrizDescuento[100];
 	Limpiar Pantalla;
-	menor<-Falso;
-	si entradamenores >0 Entonces
-		menor<-Verdadero;
-	FinSi
-	//inicializamos las variable con un valor 
-	AcumPerdidas<-0;
-	AcumPerdidasC3<-0;
-	AcumPerdidasC4<-0;
-	AcumPerdidasC5<-0; 
+
 	//Calcula el total del precio de los mayores del grupo
 	preciomayor<-entradamayores*200;
 	//Calcula el totlal del precio de los menores del grupo
 	preciomenor<-entradamenores*150;
-	//Calcula el precio total
-	
-	//Muestra en consola el precio total a pagar por las entradas seleccionadas
-	
 	i <- 0;
 	Mientras (i<cantidadentradas) Hacer
-		
-		Si menor Entonces
-			// guardamos las edades de menores en una matriz
-			
-			Escribir ('Digite las edades de los menores: '),(i+1),(':');
-			Leer Edades;
+		// pedimos que ingrese las edaddes
+		Escribir ('Digite las edades: '),(i+1),(':');
+		Leer Edades;
 			// verificacion de que no sea menor a 5 años de edad en caso de que haya un niño menor de edad se le mostrara un mensaje 
 			// este condicional muestra un mensaje en caso de que asista un menor de edad.
-			si (Edades<5) Entonces
-				Escribir ('****************************************************************************************************************************************************');
-				Escribir ('*                                                         Lo sentimos, niños menores a 5 años                                                      *');
-				Escribir ('*                                                               no pueden entrar.                                                                  *');
-				Escribir ('****************************************************************************************************************************************************');
-				Esperar 2 Segundos;
-				Limpiar Pantalla;
-				
-			Finsi
-			
-			// CATEGORIA 1
-			Si Edades > 5 y Edades <= 18 Entonces
-				CalculoDescuento <- preciomenor*0.4;//50
-				AcumPerdidas <- preciomenor-CalculoDescuento;
-				Escribir AcumPerdidas;
-			FinSi
-		SiNo
-			Si (Edades >=19 Y Edades <= 45) Entonces
-				AcumPerdidasC3 <- preciomayor;
-			SiNo
-				// CATEGORIA 4
-				Si (Edades >= 46 Y Edades <= 65) Entonces
-					CalculoDescuento <-preciomayor*0.10;
-					AcumPerdidasC4 <- preciomayor-CalculoDescuento;
-					
-				SiNo
-					// CATEGORIA 5
-					CalculoDescuento <- preciomayor*0.50;
-					AcumPerdidasC5 <- preciomayor-CalculoDescuento;
-					
-				FinSi // FIN SI CATEGORIA 3
-			FinSi // FIN SI CATEGORIA 2
-			
+		si (Edades<5) Entonces
+			Escribir ('****************************************************************************************************************************************************');
+			Escribir ('*                                                         Lo sentimos, niños menores a 5 años                                                      *');
+			Escribir ('*                                                               no pueden entrar.                                                                  *');
+			Escribir ('****************************************************************************************************************************************************');
+			Esperar 2 Segundos;
+			Limpiar Pantalla;
+		Finsi
+		// CATEGORIA 1
+		Si Edades > 5 y Edades <= 18 Entonces
+			MatrizDescuento[i] <- preciomenor*0.4;//50
+			MatrizPrecio[i] <- preciomenor-MatrizDescuento[i];
 		FinSi
+		
+		Si (Edades >=19 Y Edades <= 45) Entonces
+			MatrizPrecio[i]  <- preciomayor;
+		FinSi
+		// CATEGORIA 4
+		Si (Edades >= 46 Y Edades <= 65) Entonces
+			MatrizDescuento[i] <-preciomayor*0.10;
+			MatrizPrecio[i] <- preciomayor-MatrizDescuento[i];
+		SiNo
+			// CATEGORIA 5
+			MatrizDescuento[i] <- preciomayor*0.50;
+			MatrizPrecio[i] <- preciomayor-MatrizDescuento[i];
+		FinSi 
 		i <- i+1;
 	FinMientras
-	Escribir ('-------------------------------------------------------------------------------------------------------------');
-	Escribir ('|                                                  CINE MENDOZA                                             |');
-	Escribir ('-------------------------------------------------------------------------------------------------------------');
-	Escribir " ";
-	Escribir ('-                                          INFORME A DETALLE DE PERDIDAS:                                    ');
-	Escribir " ";
-	
-	
-	
-	//Calcula el total del precio de los mayores del grupo
-	PrecioAdulto<- AcumPerdidasC3+AcumPerdidasC4+AcumPerdidasC5;
-	//Calcula el totlal del precio de los menores del grupo
-	PrecioMenor<-AcumPerdidas;
-	//Calcula el precio total
-	precio<-PrecioAdulto+PrecioMenor;
+	// Sumamos los datos guardados en la matriz.
+	precio <- 0;
+	Descuento<-0;
+	Para i<-0 Hasta cantidadentradas-1 Hacer
+		// Sumamos los valores guardados en la matriz
+		precio <- precio+MatrizPrecio[i];
+		Descuento <- Descuento + MatrizDescuento[i];
+	FinPara
+    
+	Escribir ' ';
+	Escribir ('                                                         ---------------------------------------------------------                                                   ');
+	Escribir ('                                                        |                      CINE MENDOZA                        |                                                 ');
+	Escribir ('                                                         ----------------------------------------------------------                                                  ');
+	Escribir "                                                         |                                                          |                                                  ";
+	Escribir "                                                         |                      INFORME DE COMPRA                   |                                                  ";
+	Escribir "                                                         |                                                          |                                                  ";
+	Escribir ('                                                         ----------------------------------------------------------                                                   ');
+	Escribir "                                                         |+ Numero de entradas                         N°: | ",cantidadentradas;
+	Escribir "                                                         |+ Descuento                                   $: | ",Descuento;
+	Escribir "                                                         |+ Precio sin descuento                        $: | ",Descuento + precio;
+	Escribir "                                                         |+ Precio con descuento                        $: | ",precio;
+
 	//Muestra en consola el precio total a pagar por las entradas seleccionadas
-	Escribir "Costo total $ ",precio;
+
+	Esperar 3 segundos;
 FinSubProceso
 
 //Este subproceso toma el valor total de las entradas y cuantos menores y mayores van 
@@ -111,6 +97,11 @@ SubProceso edad(entradamayores Por Referencia,entradamenores Por Referencia,cant
 	cantidadentradas<-entradamayores+entradamenores;
 FinSubProceso
 
+SubAlgoritmo mostrarPrecio
+	Escribir "Los precios de las entradas son los siguientes:";
+	Escribir "MAYORES DE 18 ANOS: $200.";
+	Escribir "MENORES DE 18 ANOS $150";
+FinSubAlgoritmo
 //Este subproceso muesta la cartelera de peliculas ofrecidas por el cine
 // y los constos difeneciados entre mayores y menores, y toma el valor
 // de que pelicula vera el grupo
@@ -119,7 +110,7 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Definir p1,p2,p3 Como Entero;
 	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
-	Escribir "Gracias por su confirmacion!";
+	Escribir "                                                                                 Gracias por su confirmacion!                                                             ";
 	Escribir "Los precios de las entradas son los siguientes:";
 	Escribir "MAYORES DE 18 ANOS: $200.";
 	Escribir "MENORES DE 18 ANOS $150";
@@ -194,7 +185,7 @@ FinSubProceso
 SubProceso animacion
 	Definir i Como Entero;
 	Definir string Como Caracter;
-	string<-"Procesando su pedido";
+	string<-"Procesando...";
 	
 	Para i<-0 Hasta Longitud(string)  Con Paso 1 Hacer
 		si i=Longitud(string)  Entonces
@@ -303,7 +294,7 @@ Proceso CINE
 				Definir precio,i,j,m,butnum Como Entero;
 				Definir horas Como Caracter;
 				Definir butaca Como Entero;
-				Definir venta como entero;
+				Definir venta,decision como entero;
 				
 				Definir AcumPerdidas3 Como Real;
 				Definir cantidadentradas,entradamayores,entradamenores  Como Entero;
@@ -312,6 +303,15 @@ Proceso CINE
 				//El subproceso tarifa calculara el precio total de las entradas
 				
 				tarifa(precio,entradamayores,entradamenores,cantidadentradas);
+				// le damos la opcion de continuar con su compra o salir.
+				continuar_salir;
+				Leer decision;
+				si (decision == 1) Entonces
+					animacion;
+					Escribir "                                                                   Gracias por su confirmacion!                                                             ";
+				SiNo
+					opcion <-3;
+				FinSi
 				// El subproceso cartillapeliculas le mostrara al usuario que pelicualas hay disponibles y tomara el dato de que pelicula desea ver
 				cartillapeliculas(peliculas);
 				// El subproceso horario tomara el dato de que horario de proyeccion elije el usuario 
@@ -384,7 +384,7 @@ Proceso CINE
 			2:
 				//En esta opcion se deplegara al ususario en consola las peliculas disponibles
 				Limpiar Pantalla;
-				Definir decision Como Entero;
+				
 				Cartelera;
 				continuar_salir;
 				Leer decision;
