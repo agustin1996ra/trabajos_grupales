@@ -13,11 +13,7 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 	//Calcula el total del precio de los mayores del grupo
 	preciomayor<-200;
 	//Calcula el totlal del precio de los menores del grupo
-<<<<<<< Updated upstream
-	preciomenor<-entradamenores*150;
-=======
 	preciomenor<-150;
->>>>>>> Stashed changes
 	i <- 0;
 	Mientras (i<cantidadentradas) Hacer
 		// pedimos que ingrese las edaddes
@@ -114,20 +110,6 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Definir p1,p2,p3 Como Entero;
 	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
-<<<<<<< Updated upstream
-	Escribir "                                                                                 Gracias por su confirmacion!                                                             ";
-	Escribir "Los precios de las entradas son los siguientes:";
-	Escribir "MAYORES DE 18 ANOS: $200.";
-	Escribir "MENORES DE 18 ANOS $150";
-	Escribir "";
-	
-	
-	Escribir "A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-	Escribir "Opcion 1: SONIC 2 LA PELICULA.";
-	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
-	Escribir "Opcion 3: MORBIUS";
-	
-=======
 	Escribir "                                                                                          -------------                                                              ";
 	Escribir "                                                                                         | MATE CODERS |                                                             ";
 	Escribir "                                                                      -------------------------------------------------------                                             ";
@@ -142,7 +124,6 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	Escribir "                                                                     | Opcion 3: MORBIUS                                     |                                            ";
 	Escribir "                                                                      -------------------------------------------------------                                             ";
 	Esperar 3 Segundos;
->>>>>>> Stashed changes
 	//Num4 es un selector
 	Leer num4;
 	// segun el valor de num4 se almacena el valor de la pelicula seleccionada en la variable peliculas
@@ -249,40 +230,6 @@ SubAlgoritmo Bienvenido
 	Escribir " ";
 	Esperar 5 Segundos;
 FinSubAlgoritmo
-<<<<<<< Updated upstream
-
-SubAlgoritmo Mensaje
-	Escribir '                                      ---------------------------------------------------------------------------------------------------------                      ';
-	Escribir "                                        ¡El cine es un bien cultural, un medio de expresión artística, un hecho de comunicación social,                              ";
-	Escribir "                                                   una industria, un objeto de comercio, enseñanza, estudio e investigación.!                                        ";
-	Escribir '                                                 ---------------------------------------------------------------------------------                                    ';
-	Escribir "";
-	
-	Esperar 5 Segundos;
-FinSubAlgoritmo
-
-SubAlgoritmo  seleccion
-	Escribir ('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-	Escribir "|                                                                 SELECCIONE QUE OPERACION DESEA REALIZAR:                                                             |";
-	Escribir "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-	Escribir "                                                                      1. COMPRAR UNA ENTRADA.                                                                           ";
-	Escribir "                                                                      2. VER CARTELERA.                                                                                 "; 
-	Escribir "                                                                      3. SALIR.                                                                                         ";
-FinSubAlgoritmo
-
-SubAlgoritmo Cartelera
-	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
-	Escribir "|                                                                     LE OFRECEMOS LA SIGUIENTE CARTELERA:                                                             |";
-	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
-	Escribir "|                                                                       Opcion 1: SONIC 2 LA PELICULA                                                                  |";
-	Escribir "|                                                                       Opcion 2: RAPIDOS Y FURIOSOS 9                                                                 |";
-	Escribir "|                                                                       Opcion 3: MORBIUS                                                                              |";
-	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
-	Escribir " ";
-	Escribir " ";
-FinSubAlgoritmo
-
-=======
 
 SubAlgoritmo Mensaje
 	Escribir "                                                                                 ----------------------                                                              ";
@@ -317,7 +264,6 @@ SubAlgoritmo Cartelera
 	Escribir " ";
 FinSubAlgoritmo
 
->>>>>>> Stashed changes
 SubAlgoritmo continuar_salir
 	Escribir "                                -------------------------                                                             ----------------------                           ";
 	Escribir "                               | Opcion 1: (Continuar)   |                                                           |  Opcion 2: (Salir)   |                          ";	
@@ -329,11 +275,7 @@ Proceso CINE
 	// y si estos son menores tendran un precio diferido.
 	// Le informara al usuario un resumen de su eleccion y luego le ofrecera pagar el monto total.
 	Definir opcion , opc Como Entero;
-<<<<<<< Updated upstream
-	Definir vendido Como Logico;
-=======
-	Definir vendido,CrateleraVista Como Logico;
->>>>>>> Stashed changes
+	Definir vendido,CarteleraVista Como Logico;
 	Bienvenido;
 	Mensaje;
 	Limpiar Pantalla;
@@ -348,11 +290,7 @@ Proceso CINE
 		FinSi
 		Limpiar Pantalla;
 		Escribir '';
-<<<<<<< Updated upstream
-		
-=======
-		CrateleraVista<-Falso;
->>>>>>> Stashed changes
+		CarteleraVista<-Falso;
 		Segun Opcion Hacer
 			1:
 				//En esta opcion el usuario elijira la pelicula, el horario de proyeccion y ingresara cuanto mayore y menores veran la pelicula
@@ -363,14 +301,9 @@ Proceso CINE
 				Definir butaca Como Entero;
 				Definir venta,decision como entero;
 				
-<<<<<<< Updated upstream
-				Definir AcumPerdidas3 Como Real;
-				Definir cantidadentradas,entradamayores,entradamenores  Como Entero;
-=======
 				mostrarPrecio;
 				Esperar 3 Segundos;
 				
->>>>>>> Stashed changes
 				//Llamada al subproceso edad, donde se diran cuantas entradas se desea comprar y cuantos menores hay en el grupo
 				edad(entradamayores,entradamenores,cantidadentradas);
 				//El subproceso tarifa calculara el precio total de las entradas
@@ -474,5 +407,5 @@ Proceso CINE
 		FinSegun
 		
 	Hasta Que opcion=3 o vendido=verdadero
-	Escribir "                                                 Gracias por elejirnos!! los esperamos pronto";
+	Escribir "                                                 Gracias por elejirnos!!";
 FinProceso
