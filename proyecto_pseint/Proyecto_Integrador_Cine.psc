@@ -11,9 +11,13 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 	Limpiar Pantalla;
 
 	//Calcula el total del precio de los mayores del grupo
-	preciomayor<-entradamayores*200;
+	preciomayor<-200;
 	//Calcula el totlal del precio de los menores del grupo
+<<<<<<< Updated upstream
 	preciomenor<-entradamenores*150;
+=======
+	preciomenor<-150;
+>>>>>>> Stashed changes
 	i <- 0;
 	Mientras (i<cantidadentradas) Hacer
 		// pedimos que ingrese las edaddes
@@ -110,6 +114,7 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	//Definir p1,p2,p3 Como Entero;
 	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
+<<<<<<< Updated upstream
 	Escribir "                                                                                 Gracias por su confirmacion!                                                             ";
 	Escribir "Los precios de las entradas son los siguientes:";
 	Escribir "MAYORES DE 18 ANOS: $200.";
@@ -122,6 +127,22 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
 	Escribir "Opcion 3: MORBIUS";
 	
+=======
+	Escribir "                                                                                          -------------                                                              ";
+	Escribir "                                                                                         | MATE CODERS |                                                             ";
+	Escribir "                                                                      -------------------------------------------------------                                             ";
+	Escribir "                                                                                 Gracias por su confirmacion!                                                             ";
+	Escribir "                                                                                                                                                                          ";
+	Escribir "                                                                      -------------------------------------------------------                                             ";
+	Escribir "                                                                     |  A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: |                                            ";
+	Escribir "                                                                     |                                                       |                                            ";                                                                                                        
+	Escribir "                                                                      -------------------------------------------------------                                             ";
+	Escribir "                                                                     | Opcion 1: SONIC 2 LA PELICULA.                        |                                            ";
+	Escribir "                                                                     | Opcion 2: RAPIDOS Y FURIOSOS 9                        |                                            ";
+	Escribir "                                                                     | Opcion 3: MORBIUS                                     |                                            ";
+	Escribir "                                                                      -------------------------------------------------------                                             ";
+	Esperar 3 Segundos;
+>>>>>>> Stashed changes
 	//Num4 es un selector
 	Leer num4;
 	// segun el valor de num4 se almacena el valor de la pelicula seleccionada en la variable peliculas
@@ -150,10 +171,10 @@ SubProceso horario(horas Por Referencia)
 	Definir j1,j2,j3,j4 Como Caracter;
 	Limpiar Pantalla;
 	Escribir "Por favor, seleccione el horario en el que desea asistir:";
-	Escribir "    1.- 3:00 pm.";
-	Escribir "    2.- 5:00 pm.";
-	Escribir "    3.- 7:00 pm.";
-	Escribir "    4.- 9:00 pm.";
+	Escribir "    1.- 15:00 pm.";
+	Escribir "    2.- 17:00 pm.";
+	Escribir "    3.- 19:00 pm.";
+	Escribir "    4.- 21:00 pm.";
 	Repetir
 		// jornada es un selector
 		Leer jornada;
@@ -165,16 +186,16 @@ SubProceso horario(horas Por Referencia)
 	// Segun el valor jornada se almacena el dato de cual fue el horario de la proyeccion en la variable "horas"
 	Segun jornada Hacer
 		1:
-			j1<-"3:00 pm.";
+			j1<-"15:00 pm.";
 			horas<-j1;
 		2:
-			j2<-"5:00 pm.";
+			j2<-"17:00 pm.";
 			horas<-j2;
 		3:
-			j3<-"7:00 pm.";
+			j3<-"19:00 pm.";
 			horas<-j3;
 		4:
-			j4<-"9:00 pm.";
+			j4<-"21:00 pm.";
 			horas<-j4;
 		De Otro Modo:
 			Escribir "Por favor, digite nuevamente";
@@ -228,6 +249,7 @@ SubAlgoritmo Bienvenido
 	Escribir " ";
 	Esperar 5 Segundos;
 FinSubAlgoritmo
+<<<<<<< Updated upstream
 
 SubAlgoritmo Mensaje
 	Escribir '                                      ---------------------------------------------------------------------------------------------------------                      ';
@@ -260,6 +282,42 @@ SubAlgoritmo Cartelera
 	Escribir " ";
 FinSubAlgoritmo
 
+=======
+
+SubAlgoritmo Mensaje
+	Escribir "                                                                                 ----------------------                                                              ";
+	Escribir "                                                                                | MATE CODERS PRESENTA |                                                             ";
+	Escribir '                                      ---------------------------------------------------------------------------------------------------------                      ';
+	Escribir "                                        ¡El cine es un bien cultural, un medio de expresión artística, un hecho de comunicación social,                              ";
+	Escribir "                                                   una industria, un objeto de comercio, enseñanza, estudio e investigación.!                                        ";
+	Escribir '                                                 ---------------------------------------------------------------------------------                                   ';
+	Escribir "";
+	
+	Esperar 5 Segundos;
+FinSubAlgoritmo
+
+SubAlgoritmo  seleccion
+	Escribir ('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+	Escribir "|                                                                 SELECCIONE QUE OPERACION DESEA REALIZAR:                                                             |";
+	Escribir "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+	Escribir "                                                                      1. COMPRAR UNA ENTRADA.                                                                           ";
+	Escribir "                                                                      2. VER CARTELERA.                                                                                 "; 
+	Escribir "                                                                      3. SALIR.                                                                                         ";
+FinSubAlgoritmo
+
+SubAlgoritmo Cartelera
+	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+	Escribir "|                                                                     LE OFRECEMOS LA SIGUIENTE CARTELERA:                                                             |";
+	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+	Escribir "|                                                                         SONIC 2 LA PELICULA                                                                          |";
+	Escribir "|                                                                         RAPIDOS Y FURIOSOS 9                                                                         |";
+	Escribir "|                                                                         MORBIUS                                                                                      |";
+	Escribir ('----------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+	Escribir " ";
+	Escribir " ";
+FinSubAlgoritmo
+
+>>>>>>> Stashed changes
 SubAlgoritmo continuar_salir
 	Escribir "                                -------------------------                                                             ----------------------                           ";
 	Escribir "                               | Opcion 1: (Continuar)   |                                                           |  Opcion 2: (Salir)   |                          ";	
@@ -271,7 +329,11 @@ Proceso CINE
 	// y si estos son menores tendran un precio diferido.
 	// Le informara al usuario un resumen de su eleccion y luego le ofrecera pagar el monto total.
 	Definir opcion , opc Como Entero;
+<<<<<<< Updated upstream
 	Definir vendido Como Logico;
+=======
+	Definir vendido,CrateleraVista Como Logico;
+>>>>>>> Stashed changes
 	Bienvenido;
 	Mensaje;
 	Limpiar Pantalla;
@@ -286,18 +348,29 @@ Proceso CINE
 		FinSi
 		Limpiar Pantalla;
 		Escribir '';
+<<<<<<< Updated upstream
 		
+=======
+		CrateleraVista<-Falso;
+>>>>>>> Stashed changes
 		Segun Opcion Hacer
 			1:
 				//En esta opcion el usuario elijira la pelicula, el horario de proyeccion y ingresara cuanto mayore y menores veran la pelicula
+				Definir cantidadentradas,entradamayores,entradamenores  Como Entero;
 				Definir peliculas Como Caracter;
 				Definir precio,i,j,m,butnum Como Entero;
 				Definir horas Como Caracter;
 				Definir butaca Como Entero;
 				Definir venta,decision como entero;
 				
+<<<<<<< Updated upstream
 				Definir AcumPerdidas3 Como Real;
 				Definir cantidadentradas,entradamayores,entradamenores  Como Entero;
+=======
+				mostrarPrecio;
+				Esperar 3 Segundos;
+				
+>>>>>>> Stashed changes
 				//Llamada al subproceso edad, donde se diran cuantas entradas se desea comprar y cuantos menores hay en el grupo
 				edad(entradamayores,entradamenores,cantidadentradas);
 				//El subproceso tarifa calculara el precio total de las entradas
