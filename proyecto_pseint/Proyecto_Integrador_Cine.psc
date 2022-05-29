@@ -19,11 +19,11 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 		// pedimos que ingrese las edaddes
 		Escribir ('Digite las edades: '),(i+1),(':');
 		Leer Edades;
-			// verificacion de que no sea menor a 5 años de edad en caso de que haya un niño menor de edad se le mostrara un mensaje 
+			// verificacion de que no sea menor a 5 aï¿½os de edad en caso de que haya un niï¿½o menor de edad se le mostrara un mensaje 
 			// este condicional muestra un mensaje en caso de que asista un menor de edad.
 		si (Edades<5) Entonces
 			Escribir ('****************************************************************************************************************************************************');
-			Escribir ('*                                                         Lo sentimos, niños menores a 5 años                                                      *');
+			Escribir ('*                                                         Lo sentimos, niï¿½os menores a 5 aï¿½os                                                      *');
 			Escribir ('*                                                               no pueden entrar.                                                                  *');
 			Escribir ('****************************************************************************************************************************************************');
 			Esperar 2 Segundos;
@@ -66,7 +66,7 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores,cantidaden
 	Escribir "                                                         |                      INFORME DE COMPRA                   |                                                  ";
 	Escribir "                                                         |                                                          |                                                  ";
 	Escribir ('                                                         ----------------------------------------------------------                                                   ');
-	Escribir "                                                         |+ Numero de entradas                         N°: | ",cantidadentradas;
+	Escribir "                                                         |+ Numero de entradas                         Nï¿½: | ",cantidadentradas;
 	Escribir "                                                         |+ Descuento                                   $: | ",Descuento;
 	Escribir "                                                         |+ Precio sin descuento                        $: | ",Descuento + precio;
 	Escribir "                                                         |+ Precio con descuento                        $: | ",precio;
@@ -107,9 +107,8 @@ FinSubAlgoritmo
 // de que pelicula vera el grupo
 SubProceso cartillapeliculas(peliculas Por Referencia)
 	Definir num4 Como Entero;
-	//Definir p1,p2,p3 Como Entero;
-	Definir p1,p2,p3 Como Caracter;
 	Limpiar Pantalla;
+
 	Escribir "                                                                                          -------------                                                              ";
 	Escribir "                                                                                         | MATE CODERS |                                                             ";
 	Escribir "                                                                      -------------------------------------------------------                                             ";
@@ -140,8 +139,38 @@ SubProceso cartillapeliculas(peliculas Por Referencia)
 		De Otro Modo:
 			Escribir "Opcion Incorrecta.Por favor, digite nuevamente:";
 	FinSegun
+
+	Escribir "Gracias por su confirmacion!";
+	Escribir "Los precios de las entradas son los siguientes:";
+	Escribir "MAYORES DE 18 ANOS: $200.";
+	Escribir "MENORES DE 18 ANOS $150";
+	Escribir "";
 	
-	//Escribir "peliculas: ",peliculas;
+	
+	Escribir "A CONTINUACION, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
+	Escribir "Opcion 1: SONIC 2 LA PELICULA.";
+	Escribir "Opcion 2: RAPIDOS Y FURIOSOS 9";
+	Escribir "Opcion 3: MORBIUS";
+
+	
+	Repetir
+		//Num4 es un selector
+		Leer num4;
+		Si num4<1 O num4>3 Entonces
+			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// segun el valor de "num4" se almacena el valor de la pelicula seleccionada en la variable "peliculas"
+			Segun num4 Hacer
+				1:
+					peliculas<-"Opcion 1: SONIC 2 LA PELICULA";
+				2:
+					peliculas<-"Opcion 2: RAPIDOS Y FURIOSOS 9";
+				3:
+					peliculas<-"Opcion 3: MORBIUS";
+			FinSegun
+		FinSi
+	Hasta Que num4>=1 Y num4<=3;
+	
 FinSubProceso
 
 
@@ -149,7 +178,6 @@ FinSubProceso
 SubProceso horario(horas Por Referencia)
 	// Este sub proceso se encarga de permitirle al usuario que elija la hora de proyeccion de la pelicula
 	Definir jornada Como Entero;
-	Definir j1,j2,j3,j4 Como Caracter;
 	Limpiar Pantalla;
 	Escribir "Por favor, seleccione el horario en el que desea asistir:";
 	Escribir "    1.- 15:00 pm.";
@@ -161,6 +189,18 @@ SubProceso horario(horas Por Referencia)
 		Leer jornada;
 		Si jornada<1 O jornada>4 Entonces
 			Escribir Sin Saltar "Opcion incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// Segun el valor jornada se almacena el dato de cual fue el horario de la proyeccion en la variable "horas"
+			Segun jornada Hacer
+				1:
+					horas<-"3:00 pm.";
+				2:
+					horas<-"5:00 pm.";
+				3:
+					horas<-"7:00 pm.";
+				4:
+					horas<-"9:00 pm.";
+			FinSegun
 		FinSi
 	Hasta Que jornada>=1 Y jornada<=4;
 	
@@ -225,7 +265,7 @@ FinSubProceso
 
 SubAlgoritmo Bienvenido
 	Escribir ('                                              -------------------------------------------------------------------------------------------                         ');
-	Escribir "                                                                     *** ¡BIENVENIDO/A AL MEJOR CINE DE MENDOZA! ***                                               ";
+	Escribir "                                                                     *** ï¿½BIENVENIDO/A AL MEJOR CINE DE MENDOZA! ***                                               ";
 	Escribir ('                                                            -----------------------------------------------------------------                                     ');
 	Escribir " ";
 	Esperar 5 Segundos;
@@ -235,8 +275,8 @@ SubAlgoritmo Mensaje
 	Escribir "                                                                                 ----------------------                                                              ";
 	Escribir "                                                                                | MATE CODERS PRESENTA |                                                             ";
 	Escribir '                                      ---------------------------------------------------------------------------------------------------------                      ';
-	Escribir "                                        ¡El cine es un bien cultural, un medio de expresión artística, un hecho de comunicación social,                              ";
-	Escribir "                                                   una industria, un objeto de comercio, enseñanza, estudio e investigación.!                                        ";
+	Escribir "                                        ï¿½El cine es un bien cultural, un medio de expresiï¿½n artï¿½stica, un hecho de comunicaciï¿½n social,                              ";
+	Escribir "                                                   una industria, un objeto de comercio, enseï¿½anza, estudio e investigaciï¿½n.!                                        ";
 	Escribir '                                                 ---------------------------------------------------------------------------------                                   ';
 	Escribir "";
 	
@@ -296,7 +336,8 @@ Proceso CINE
 				//En esta opcion el usuario elijira la pelicula, el horario de proyeccion y ingresara cuanto mayore y menores veran la pelicula
 				Definir cantidadentradas,entradamayores,entradamenores  Como Entero;
 				Definir peliculas Como Caracter;
-				Definir precio,i,j,m,butnum Como Entero;
+				Definir v Como Logico;
+				Definir precio,i,j,m,butnum,m1 Como Entero;
 				Definir horas Como Caracter;
 				Definir butaca Como Entero;
 				Definir venta,decision como entero;
@@ -324,7 +365,7 @@ Proceso CINE
 				horario(horas);
 				
 				
-				//Aqui se le pedira al usuario que elija la numaracion de las entradas
+				// Se despliega la matriz de la numeracion de las butacas
 				Dimension butaca[5,10];
 				Dimension butnum(100);
 				Limpiar Pantalla;
@@ -341,8 +382,33 @@ Proceso CINE
 				FinPara
 				Escribir "";
 				
+				
+				//Aqui se le pedira al usuario que elija la numaracion de las entradas
 				Para m<-0 Hasta cantidadentradas-1 Hacer
-					Leer butnum(m);
+					Repetir
+						v <- Verdadero;
+						Leer m1;
+						
+						Si m1 < 0 O m1 > 49  Entonces
+							// Se salva el error de que el numero ingrsado este fuera de rango
+							v <- Falso;
+							Escribir "El valor ingresado esta fuera de rango, por favor vuelva a ingrasar";
+						SiNo
+							Si m <> 0 Entonces
+								Para i <- 0 Hasta m-1 Con Paso 1 Hacer
+									Si butnum(i) = m1 Entonces
+										// Se salva el error de que el numero este repetido
+										v <- Falso;
+										Escribir "El valor ingresado esta repetido, por favor vuelva a ingresar";
+									FinSi
+								FinPara
+							FinSi
+						FinSi
+						
+						Si v = Verdadero Entonces
+							butnum(m) <- m1;
+						FinSi
+					Hasta Que v = Verdadero
 				FinPara
 				
 				
@@ -380,10 +446,24 @@ Proceso CINE
 					1:
 						Limpiar Pantalla;
 						vendido <- verdadero;
+						Escribir "        ï¿½ï¿½ï¿½Gracias por su compra!!!";
+						Escribir "";
+						Escribir "              ï¿½Los/as esperamos!";
+						Escribir "";
+						Escribir "           *-FACUNDO MARTï¿½N GIACOMOZZI-*  ";
+						Escribir "           *-MATï¿½AS CANEVARO*   ";
+						Escribir "           *-MARTï¿½N ALEJANDRO TORRES-* ";
+						Escribir "           *-EDUARDO LUIS Gï¿½MEZ-*";
+						Escribir "           *-CINTHIA FERNANDA SEGOVIA-*";
+						Escribir "           *-GABRIEL ROMERO-* ";
+						Escribir "           *-AGUSTIN RODRIGUEZ ALVAREZ-* ";
+						Escribir "           *-LAUTARO URQUIZA-* ";
+						Escribir "           *-FEDERICO PFUND-* ";
+						Escribir "           *-SABRINA MANTERO-* ";
 					2: 
 						Limpiar Pantalla;
 						Escribir "LO SENTIMOS. SU COMPRA NO PUDO REALIZARSE.";
-						vendido <- Verdadero;
+						vendido <- Falso;
 					De Otro Modo:
 						Escribir "OPCION INCORRECTA.";
 				FinSegun
