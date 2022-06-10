@@ -2,44 +2,71 @@ Proceso cine
 	//Programa que tiene como objetivo brindar las opciones de proyección de un cine. 
 	//El mismo, permite: adquirir entradas para mayores y/o menores, seleccionar la película y la/s butacas.
 	//Al finalizar, brindará al usuario un resumen de su elección y la opción de pagar el monto total.
-	Definir i Como Entero;
-	
 	Definir idioma,palabra como cadena;
-	
-	i<-0;
-	
-	
 	Repetir
-		Escribir "Eliga Idioma Espanol o Ingles";
+		Escribir "Elija Idioma espanol o ingles";
 		Leer idioma;
 	Hasta Que idioma = "espanol" o idioma = "ingles"
 	
-	Mientras i< Longitud(idioma) Hacer
-		palabra<-"";
-		//si Subcadena(frase,i,i) <> " " Entonces
-		//almacenar la palabra completa dentro de la variable palabra
-		Mientras  i<Longitud(idioma) Hacer
-			palabra<-Concatenar(palabra,Subcadena(idioma,i,i));
-			i<-i+1;
-		FinMientras
-		
-		si palabra = "ingles" Entonces
-			codigoIngles();
-		SiNo
-			si palabra = "espanol" Entonces
-				codigoespanol();
-			
-			FinSi
+	si idioma = "ingles" Entonces
+		codigoIngles();
+	SiNo
+		si idioma = "espanol" Entonces
+			codigoespanol();
 		FinSi
-		
-		Mientras i<Longitud(idioma) Hacer
-			i<-i+1;
-		FinMientras
-		
-		
-	FinMientras
-	
+	FinSi
 FinProceso
+
+
+SubProceso codigoespanol()
+	Definir opcion Como Entero;
+	Definir vendido Como Logico;
+	Escribir "            ¡¡¡BIENVENIDO/AS AL CINE DE LOS/AS MATE-CODERS!!!";
+	Escribir "";
+	Repetir
+		vendido<-falso;
+		menuespanol();
+		Leer opcion;
+		Escribir '';
+		Segun opcion Hacer
+			1:
+				confirmacionEspanol();
+				vendido <- Verdadero;
+			2:
+				//Opción que depliega en consola,las películas disponibles para los/as ususario/as
+				opcion2CarteleraEspanol();
+			3:
+				
+			De Otro Modo:
+				errorOpcionEspanol();
+		FinSegun
+	Hasta Que opcion=3 o vendido=verdadero
+FinSubProceso
+
+SubProceso codigoIngles()
+	Definir opcion Como Entero;
+	Definir vendido Como Logico;
+	Escribir "            ¡¡¡BIENVENIDO/AS AL CINE DE LOS/AS MATE-CODERS!!!";
+	Escribir "";
+	Repetir
+		vendido<-falso;
+		menuIngles();
+		Leer opcion;
+		Escribir '';
+		Segun opcion Hacer
+			1:
+				confirmacionIngles();
+				vendido <- Verdadero;
+			2:
+				//Opción que depliega en consola,las películas disponibles para los/as ususario/as
+				opcion2CarteleraIngles();
+			3:
+				
+			De Otro Modo:
+				errorOpcionIngles();
+		FinSegun
+	Hasta Que opcion=3 o vendido=verdadero
+FinSubProceso
 
 //  CODIGO  QUE COMPARTE LOS DOS IDIOMAS
 
@@ -72,9 +99,6 @@ FinSubProceso
 
 SubProceso cartillapeliculas(peliculas Por Referencia)
 	Definir num4 Como Entero;
-	
-	
-	
 	Repetir
 		//La variable "Num4" es un selector.
 		Leer num4;
@@ -102,8 +126,6 @@ SubProceso horario(horas Por Referencia)
 	Escribir "    2.- 5:00 pm.";
 	Escribir "    3.- 7:00 pm.";
 	Escribir "    4.- 9:00 pm.";
-	
-	
 	
 	Repetir
 		//La variable "jornada" es un selector:
@@ -176,66 +198,12 @@ SubProceso matriz()
 	Escribir "";
 FinSubProceso
 
-
-
-
-
-
-
-
-
-
-
-
 //                CODIGO EN ESPAÑOL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 SubProceso butacaEspanol()
 	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
 FinSubProceso
-
-
-SubProceso codigoespanol()
-	Definir opcion Como Entero;
-	Definir vendido Como Logico;
-	Escribir "            ¡¡¡BIENVENIDO/AS AL CINE DE LOS/AS MATE-CODERS!!!";
-	Escribir "";
-	Repetir
-		vendido<-falso;
-		menuespanol();
-		Leer opcion;
-		Escribir '';
-		Segun opcion Hacer
-			1:
-				confirmacionEspanol();
-				vendido <- Verdadero;
-			2:
-				//Opción que depliega en consola,las películas disponibles para los/as ususario/as
-				opcion2CarteleraEspanol();
-			3:
-				
-			De Otro Modo:
-				errorOpcionEspanol();
-		FinSegun
-	Hasta Que opcion=3 o vendido=verdadero
-FinSubProceso
-
-
-
 
 
 
@@ -246,10 +214,6 @@ FinSubProceso
 SubProceso fueraderangoORepetidoEspanol()
 	Escribir "El valor ingresado está fuera de rango o está repetido. Por favor, digite nuevamente:";
 FinSubProceso
-
-
-
-
 
 SubProceso menuespanol()
 	Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
@@ -387,10 +351,6 @@ SubProceso confirmacionEspanol()
 	FinSegun
 FinSubProceso
 
-
-
-
-
 SubProceso mostrarespanol(arreglo,cantidadentradas)
 	Definir i Como Entero;
 	para i<-0 Hasta cantidadentradas-1 Con Paso 1 Hacer
@@ -399,66 +359,12 @@ SubProceso mostrarespanol(arreglo,cantidadentradas)
 FinSubProceso
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //                CODIGO EN INGLES
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 SubProceso butacaIngles()
 	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
 FinSubProceso
-
-
-SubProceso codigoIngles()
-	Definir opcion Como Entero;
-	Definir vendido Como Logico;
-	Escribir "            ¡¡¡BIENVENIDO/AS AL CINE DE LOS/AS MATE-CODERS!!!";
-	Escribir "";
-	Repetir
-		vendido<-falso;
-		menuIngles();
-		Leer opcion;
-		Escribir '';
-		Segun opcion Hacer
-			1:
-				confirmacionIngles();
-				vendido <- Verdadero;
-			2:
-				//Opción que depliega en consola,las películas disponibles para los/as ususario/as
-				opcion2CarteleraIngles();
-			3:
-				
-			De Otro Modo:
-				errorOpcionIngles();
-		FinSegun
-	Hasta Que opcion=3 o vendido=verdadero
-FinSubProceso
-
-
 
 
 
@@ -472,9 +378,6 @@ SubProceso fueraderangoORepetidoIngles()
 FinSubProceso
 
 
-
-
-
 SubProceso menuIngles()
 	Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
 	Escribir "";
@@ -482,11 +385,6 @@ SubProceso menuIngles()
 	Escribir "2. VER LA CARTELERA. ";
 	Escribir "3. SALIR. ";
 FinSubProceso
-
-
-
-
-
 
 SubProceso cartillapeliculaIngles()
 	Escribir "";
@@ -516,8 +414,6 @@ SubProceso opcion2CarteleraIngles()
 FinSubProceso
 
 
-
-
 SubProceso entradaIngles(entradas Por Referencia,menores Por Referencia)
 	
 	Escribir "¿Cuántas entradas desea comprar?";
@@ -531,8 +427,6 @@ FinSubProceso
 SubProceso seleccionHoraIngles()
 	Escribir "Por favor, seleccione el horario en el que desea asistir:";
 FinSubProceso
-
-
 
 
 SubProceso confirmacionIngles()
@@ -610,9 +504,6 @@ SubProceso confirmacionIngles()
 			Escribir "OPCIÓN INCORRECTA.";
 	FinSegun
 FinSubProceso
-
-
-
 
 
 SubProceso mostrarIngles(arreglo,cantidadentradas)
