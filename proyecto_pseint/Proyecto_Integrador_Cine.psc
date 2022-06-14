@@ -476,10 +476,7 @@ SubProceso matriz()
 	Escribir "";
 FinSubProceso
 
-
-
 //SUBPROCESO PARA MOSTRAR LAS PELICULAS EN CARTELERA "opcion 2" del menu principal
-
 
 SubProceso opcion2CarteleraEspanol()
 	Limpiar Pantalla;
