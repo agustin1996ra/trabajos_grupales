@@ -15,6 +15,7 @@ Proceso cine
 			codigoespanol();
 		FinSi
 	FinSi
+	saludofinal();
 FinProceso
 
 
@@ -170,8 +171,6 @@ SubProceso confirmacionIngles()
 	// Llamada al subproceso horario (almacenará el dato del horario de proyección) 
 	horarioIngles(horas);
 	//Matriz: muestra la numeración de las butacas:
-	butacaIngles();
-	matriz();
 	//llena el arreglo seleccion de butacas
 	llenararregloIngles(arregloEjemplo,cantidadentradas);
 	//muestra el arreglo
@@ -542,4 +541,21 @@ SubProceso mostrarIngles(arreglo,cantidadentradas)
 	para i<-0 Hasta cantidadentradas-1 Con Paso 1 Hacer
 		Escribir "In seat number: ",arreglo[i];
 	FinPara
+FinSubProceso
+
+SubProceso saludofinal()
+	Escribir "                                                                        ##                                       ";
+	Escribir "                                                                       ##                                        ";
+	Escribir "######################################################################  #########################################";
+	Escribir "#####################################################################  ##########################################";
+	Escribir "#######  #####   #######  ##         ###      #########    #########  ####     ######      ###     ######    ####";
+	Escribir "######    ###    ######   ##        ###       #######      ###        ###        ###       ##        ##       ###";
+	Escribir "#####     ##    #####      ####  ######  ##########    ######         ###  ####  ###  #######  ###   ##  ########";
+	Escribir "#####  #  #  #  ####   #   ###   ######     #######   ######          ##   ####  ###      ###       ###     #####";
+	Escribir "####   #    #   ###        ###   #####   #########   #######         ###  ####   ##   ######       #######   ####";
+	Escribir "####   ##  ##  ###   ###   ##   ######  ###########   ######         ##   ###   ###   ######  ###   ######   ####";
+	Escribir "####   #####   ##   #####  ##   #####       ########     ####      ####        ###       ###  ###   #       #####";
+	Escribir "#################################################################################################################";
+	Escribir "#################################################################################################################";
+
 FinSubProceso
