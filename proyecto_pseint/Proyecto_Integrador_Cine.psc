@@ -25,7 +25,11 @@ SubProceso codigoespanol()
 	Escribir "";
 	Repetir
 		vendido<-falso;
-		menuespanol();
+		Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
+		Escribir "";
+		Escribir "1. COMPRAR UNA ENTRADA. ";
+		Escribir "2. VER LA CARTELERA. ";
+		Escribir "3. SALIR. ";
 		Leer opcion;
 		Escribir '';
 		Segun opcion Hacer
@@ -50,7 +54,11 @@ SubProceso codigoIngles()
 	Escribir "";
 	Repetir
 		vendido<-falso;
-		menuIngles();
+		Escribir "SELECT THE OPERATION YOU WANT TO DO, PLEASE:";
+		Escribir "";
+		Escribir "1. BUY A TICKET. ";
+		Escribir "2. SEE MOVIE BILLBOARD. ";
+		Escribir "3. EXIT. ";
 		Leer opcion;
 		Escribir '';
 		Segun opcion Hacer
@@ -70,7 +78,6 @@ FinSubProceso
 
 //Comentario
 
-
 SubProceso confirmacionEspanol()
 	//Menú de opciones: selección del film ,horario y entradas para mayores ó menores.
 	Definir peliculas,horas Como Caracter;
@@ -88,8 +95,7 @@ SubProceso confirmacionEspanol()
 	
 	horarioEspanol(horas);
 	//Matriz: muestra la numeración de las butacas:
-	butacaEspanol();
-	matriz();
+	
 	//llena el arreglo seleccion de butacas
 	llenararregloEspanol(arregloEjemplo,cantidadentradas);
 	//muestra el arreglo
@@ -228,8 +234,6 @@ SubProceso edadEspanol(entradamayores Por Referencia,entradamenores Por Referenc
 	//Definir entradas,menores Como Entero;
 	Definir entradas,menores Como Entero;
 	entradaEspanol(entradas,menores);
-	
-	
 	entradamayores<-entradas-menores;
 	//Asigna el valor de la cantidad de entradas para los menores del grupo
 	entradamenores<-menores;
@@ -261,7 +265,7 @@ subProceso tarifa(precio Por Referencia,entradamayores,entradamenores)
 FinSubProceso
 
 
-// hacerlo para ingles
+//Subproceso 
 SubProceso cartillapeliculasEspanol(peliculas Por Referencia)
 	Escribir "";
 	Escribir "¡GRACIAS POR SU CONFIRMACIÓN!";
@@ -327,7 +331,7 @@ SubProceso cartillapeliculasIngles(peliculas Por Referencia)
 FinSubProceso
 
 
-// duplicar ingles
+//  
 SubProceso horarioEspanol(horas Por Referencia)
 	//subproceso: permite al usuario seleccionarla hora de proyección del film:
 	Definir jornada Como Entero;
@@ -392,6 +396,8 @@ FinSubProceso
 SubProceso llenararregloEspanol(arreglo Por Referencia,cantidadentradas)
 	Definir i,m1,m Como Entero;
 	Definir v Como Logico;
+	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
+	matriz();
 	Para m<-0 Hasta cantidadentradas-1 Hacer
 		Repetir
 			v <- Verdadero;
@@ -423,6 +429,8 @@ FinSubProceso
 SubProceso llenararregloIngles(arreglo Por Referencia,cantidadentradas)
 	Definir i,m1,m Como Entero;
 	Definir v Como Logico;
+	Escribir "Please, select the position of the seat you want to sit:";
+	matriz();
 	Para m<-0 Hasta cantidadentradas-1 Hacer
 		Repetir
 			v <- Verdadero;
@@ -470,37 +478,8 @@ SubProceso matriz()
 FinSubProceso
 
 
-//SUBPROCESO PARA SELECCIONAR LAS BUTACAS
 
-SubProceso butacaEspanol()
-	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
-FinSubProceso
-
-SubProceso butacaIngles()
-	Escribir "Please, select the position of the seat you want to sit:";
-FinSubProceso
-
-
-//SUBPROCESO DE MENU PARA EL USUARIO
-
-SubProceso menuespanol()
-	Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
-	Escribir "";
-	Escribir "1. COMPRAR UNA ENTRADA. ";
-	Escribir "2. VER LA CARTELERA. ";
-	Escribir "3. SALIR. ";
-FinSubProceso
-
-SubProceso menuIngles()
-	Escribir "SELECT THE OPERATION YOU WANT TO DO, PLEASE:";
-	Escribir "";
-	Escribir "1. BUY A TICKET. ";
-	Escribir "2. SEE MOVIE BILLBOARD. ";
-	Escribir "3. EXIT. ";
-FinSubProceso
-
-
-//SUBPROCESO PARA MOSTRAR LAS PELICULAS EN CARTELERA
+//SUBPROCESO PARA MOSTRAR LAS PELICULAS EN CARTELERA "opcion 2" del menu principal
 
 
 SubProceso opcion2CarteleraEspanol()
@@ -532,7 +511,6 @@ FinSubProceso
 
 // Sub
 
-
 SubProceso entradaEspanol(entradas Por Referencia,menores Por Referencia)
 	Escribir "¿Cuántas entradas desea comprar?";
 	Leer entradas; //Lee el valor total del número de entradas
@@ -551,7 +529,6 @@ FinSubProceso
 
 
 //Comentario
-
 
 SubProceso mostrarespanol(arreglo,cantidadentradas)
 	Definir i Como Entero;
