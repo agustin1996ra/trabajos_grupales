@@ -2,7 +2,7 @@ Proceso cine
 	//Programa que tiene como objetivo brindar las opciones de proyección de un cine. 
 	//El mismo, permite: adquirir entradas para mayores y/o menores, seleccionar la película y la/s butacas.
 	//Al finalizar, brindará al usuario un resumen de su elección y la opción de pagar el monto total.
-	Definir idioma,palabra como cadena;
+	Definir idioma como cadena;
 	Repetir
 		Escribir "Elija Idioma espanol o ingles";
 		Leer idioma;
@@ -38,7 +38,7 @@ SubProceso codigoespanol()
 			3:
 				
 			De Otro Modo:
-				errorOpcionEspanol();
+				Escribir Sin Saltar "Opción incorrecta. Por favor, digite nuevamente: ";
 		FinSegun
 	Hasta Que opcion=3 o vendido=verdadero
 FinSubProceso
@@ -63,292 +63,10 @@ SubProceso codigoIngles()
 			3:
 				
 			De Otro Modo:
-				errorOpcionIngles();
+				Escribir Sin Saltar "Wrong choice. Please, type again: ";
 		FinSegun
 	Hasta Que opcion=3 o vendido=verdadero
 FinSubProceso
-
-
-//  CODIGO QUE COMPARTEN LOS DOS IDIOMAS
-
-
-SubProceso edad(entradamayores Por Referencia,entradamenores Por Referencia,cantidadentradas Por Referencia)
-	//Definir entradas,menores Como Entero;
-	Definir entradas,menores Como Entero;
-	entradaEspanol(entradas,menores);
-	
-	
-	entradamayores<-entradas-menores;
-	//Asigna el valor de la cantidad de entradas para los menores del grupo
-	entradamenores<-menores;
-	//Calcula el total de las entradas
-	cantidadentradas<-entradamayores+entradamenores;
-FinSubProceso
-
-//Subproceso: calcula el valor total a pagar por las entradas seleccionadas según las edades
-subProceso tarifa(precio Por Referencia,entradamayores,entradamenores)
-	Definir preciomayor,preciomenor Como Entero;
-	
-	//Calcula el precio total de los mayores del grupo:
-	preciomayor<-entradamayores*200;
-	//Calcula el precio total de los menores del grupo:
-	preciomenor<-entradamenores*150;
-	//Calcula el precio total:
-	precio<-preciomayor+preciomenor;
-	//Muestra en consola el precio total a pagar
-FinSubProceso
-
-SubProceso cartillapeliculas(peliculas Por Referencia)
-	Definir num4 Como Entero;
-	Repetir
-		//La variable "Num4" es un selector.
-		Leer num4;
-		Si num4<1 O num4>3 Entonces
-			errorOpcionEspanol();
-		SiNo
-			// segun el valor de "num4" se almacena el valor de la pelicula seleccionada en la variable "peliculas"
-			Segun num4 Hacer
-				1:
-					peliculas<-" SONIC 2 LA PELÍCULA.";
-				2:
-					peliculas<-" RÁPIDOS Y FURIOSOS 9.";
-				3:
-					peliculas<-" MORBIUS.";
-			FinSegun
-		FinSi
-	Hasta Que num4>=1 Y num4<=3;
-FinSubProceso
-
-SubProceso horario(horas Por Referencia)
-	//subproceso: permite al usuario seleccionarla hora de proyección del film:
-	Definir jornada Como Entero;
-	
-	Escribir "    1.- 3:00 pm.";
-	Escribir "    2.- 5:00 pm.";
-	Escribir "    3.- 7:00 pm.";
-	Escribir "    4.- 9:00 pm.";
-	
-	Repetir
-		//La variable "jornada" es un selector:
-		Leer jornada;
-		Si jornada<1 O jornada>4 Entonces
-			errorOpcionEspanol();
-		SiNo
-			// Según el valor jornada, se almacena el dato en la variable "horas":
-			Segun jornada Hacer
-				1:
-					horas<-"3:00 pm.";
-				2:
-					horas<-"5:00 pm.";
-				3:
-					horas<-"7:00 pm.";
-				4:
-					horas<-"9:00 pm.";
-			FinSegun
-		FinSi
-	Hasta Que jornada>=1 Y jornada<=4;
-FinSubProceso
-
-SubProceso llenararreglo(arreglo Por Referencia,cantidadentradas)
-	Definir i,m1,m Como Entero;
-	Definir v Como Logico;
-	Para m<-0 Hasta cantidadentradas-1 Hacer
-		Repetir
-			v <- Verdadero;
-			Leer m1;
-			
-			Si m1 < 0 O m1 > 49  Entonces
-				// Se salva el error de que la butaca esté fuera de rango
-				v <- Falso;
-				fueraderangoORepetidoEspanol();
-			SiNo
-				Si m <> 0 Entonces
-					Para i <- 0 Hasta m-1 Con Paso 1 Hacer
-						Si arreglo[i] = m1 Entonces
-							// Se salva el error de que el número este repetido
-							v <- Falso;
-							fueraderangoORepetidoEspanol();
-						FinSi
-					FinPara
-				FinSi
-			FinSi
-			
-			Si v = Verdadero Entonces
-				arreglo[m] <- m1;
-			FinSi
-		Hasta Que v = Verdadero
-	FinPara
-FinSubProceso
-
-
-
-
-SubProceso matriz()
-	Definir i,j Como Entero;
-	
-	Escribir "";
-	
-	Escribir "";
-	Para i<-0 Hasta 4 Con Paso 1 Hacer
-		Para j<-0 Hasta 9 Con Paso 1 Hacer
-			Escribir sin saltar i;
-			Escribir Sin Saltar j," ";
-		FinPara
-		Escribir "";
-	FinPara
-	Escribir "";
-FinSubProceso
-
-
-//SUBPROCESO PARA SELECCIONAR LAS BUTACAS
-
-
-SubProceso butacaEspanol()
-	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
-FinSubProceso
-
-SubProceso butacaIngles()
-	Escribir "Please, select the position of the seat you want to sit:";
-FinSubProceso
-
-
-//SUBPROCESO PARA SALVAR UNA ELECCION INCORRECTA DE BUTACA
-
-
-SubProceso errorOpcionEspanol()
-	Escribir Sin Saltar "Opción incorrecta. Por favor, digite nuevamente: ";
-FinSubProceso
-
-SubProceso errorOpcionIngles()
-	Escribir Sin Saltar "Wrong choice. Please, type again: ";
-FinSubProceso
-
-
-//SUBPROCESO PARA SALVAR UNA ELECCION INCORRECTA DE BUTACA
-
-
-SubProceso fueraderangoORepetidoEspanol()
-	Escribir "El valor ingresado está fuera de rango o está repetido. Por favor, digite nuevamente:";
-FinSubProceso
-
-SubProceso fueraderangoORepetidoIngles()
-	Escribir "The value is out of range or is repeated. Please, try again:";
-FinSubProceso
-
-
-//SUBPROCESO DE MENU PARA EL USUARIO
-
-
-SubProceso menuespanol()
-	Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
-	Escribir "";
-	Escribir "1. COMPRAR UNA ENTRADA. ";
-	Escribir "2. VER LA CARTELERA. ";
-	Escribir "3. SALIR. ";
-FinSubProceso
-
-SubProceso menuIngles()
-	Escribir "SELECT THE OPERATION YOU WANT TO DO, PLEASE:";
-	Escribir "";
-	Escribir "1. BUY A TICKET. ";
-	Escribir "2. SEE MOVIE BILLBOARD. ";
-	Escribir "3. EXIT. ";
-FinSubProceso
-
-
-//SUBPROCESO PARA MOSTRAR LAS PELICULAS EN CARTELERA
-
-
-SubProceso cartillapeliculaespanol()
-	Escribir "";
-	Escribir "¡GRACIAS POR SU CONFIRMACIÓN!";
-	Escribir "";
-	Escribir "Los precios de las entradas son los siguientes:";
-	Escribir "MAYORES DE 18 AÑOS: $200";
-	Escribir "MENORES DE 18 AÑOS $150";
-	Escribir "";
-	Escribir "A CONTINUACIÓN, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-	Escribir "Opción 1: SONIC 2 LA PELÍCULA.";
-	Escribir "Opción 2: RÁPIDOS Y FURIOSOS 9.";
-	Escribir "Opción 3: MORBIUS.";
-FinSubProceso
-
-SubProceso cartillapeliculaIngles()
-	Escribir "";
-	Escribir "¡THANKS FOR YOUR CONFIRMATION!";
-	Escribir "";
-	Escribir "The ticket prices are as follows:";
-	Escribir "OLDER THAN 18 YEARS OLD: $200";
-	Escribir "YOUNGER THAN 18 YEARS OLD: $150";
-	Escribir "";
-	Escribir "NEXT, WE OFFER YOU THE FOLLOWING MOVIE BILLBOARD: ";
-	Escribir "OPTION 1: SONIC 2 THE MOVIE.";
-	Escribir "OPTION 2: FAST AND FURIOUS 9.";
-	Escribir "OPTION 3: MORBIUS.";
-FinSubProceso
-
-
-//C
-
-
-SubProceso opcion2CarteleraEspanol()
-	Limpiar Pantalla;
-	Escribir "¡Gracias por su confirmación!";
-	Escribir "";
-	Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
-	Escribir "";
-	Escribir "Opción 1: SONIC 2 LA PELÍCULA.";
-	Escribir "Opción 2: RÁPIDOS Y FURIOSOS 9.";
-	Escribir "Opción 3: MORBIUS.";
-	Escribir " ";
-	Escribir " ";
-FinSubProceso
-
-SubProceso opcion2CarteleraIngles()
-	Limpiar Pantalla;
-	Escribir "¡Thanks for your confirmation!";
-	Escribir "";
-	Escribir "WE OFFER YOU THE FOLLOWING MOVIE BILLBOARD: ";
-	Escribir "";
-	Escribir "Option 1: SONIC 2 THE MOVIE.";
-	Escribir "Option 2: FAST AND FURIOUS 9.";
-	Escribir "Option 3: MORBIUS.";
-	Escribir " ";
-	Escribir " ";
-FinSubProceso
-
-
-//Comentario
-
-
-SubProceso entradaEspanol(entradas Por Referencia,menores Por Referencia)
-	Escribir "¿Cuántas entradas desea comprar?";
-	Leer entradas; //Lee el valor total del número de entradas
-	Escribir "¿Hay algún menor de edad? Por favor, digite la cantidad:";
-	Leer menores;//Lee el número de menores en el total de entradas
-	//Calcula la cantidad de entradas para los mayores del grupo
-FinSubProceso
-
-SubProceso entradaIngles(entradas Por Referencia,menores Por Referencia)
-	Escribir "¿How many tickets do you want to buy?";
-	Leer entradas; //Lee el valor total del número de entradas
-	Escribir "¿Is there any younger? Enter the cuantity, please:";
-	Leer menores;//Lee el número de menores en el total de entradas
-	//Calcula la cantidad de entradas para los mayores del grupo
-FinSubProceso
-
-
-//Comentario
-
-
-SubProceso seleccionHoraEspanol()
-	Escribir "Por favor, seleccione el horario en el que desea asistir:";
-FinSubProceso
-
-SubProceso seleccionHoraIngles()
-	Escribir "Select the time you want to assist, please:";
-FinSubProceso
-
 
 //Comentario
 
@@ -361,20 +79,19 @@ SubProceso confirmacionEspanol()
 	Dimension arregloEjemplo[100];
 	vendido<-falso;
 	//Llamada al subproceso edad (cantidad de entradas y menores del grupo)
-	edad(entradamayores,entradamenores,cantidadentradas);
+	edadEspanol(entradamayores,entradamenores,cantidadentradas);
 	//Llamada alsubproceso tarifa (calculará el precio total de las entradas)
 	tarifa(precio,entradamayores,entradamenores);
 	//Llamada al subproceso cartillapeliculas (mostrará películas disponibles y almacenará el dato)
-	cartillapeliculaespanol();
-	cartillapeliculas(peliculas);
+	cartillapeliculasEspanol(peliculas);
 	// Llamada al subproceso horario (almacenará el dato del horario de proyección) 
-	seleccionHoraEspanol();
-	horario(horas);
+	
+	horarioEspanol(horas);
 	//Matriz: muestra la numeración de las butacas:
 	butacaEspanol();
 	matriz();
 	//llena el arreglo seleccion de butacas
-	llenararreglo(arregloEjemplo,cantidadentradas);
+	llenararregloEspanol(arregloEjemplo,cantidadentradas);
 	//muestra el arreglo
 	//mostrar(arregloEjemplo);
 	Limpiar Pantalla;
@@ -439,20 +156,18 @@ SubProceso confirmacionIngles()
 	Dimension arregloEjemplo[100];
 	vendido<-falso;
 	//Llamada al subproceso edad (cantidad de entradas y menores del grupo)
-	edad(entradamayores,entradamenores,cantidadentradas);
+	edadIngles(entradamayores,entradamenores,cantidadentradas);
 	//Llamada alsubproceso tarifa (calculará el precio total de las entradas)
 	tarifa(precio,entradamayores,entradamenores);
 	//Llamada al subproceso cartillapeliculas (mostrará películas disponibles y almacenará el dato)
-	cartillapeliculaIngles();
-	cartillapeliculas(peliculas);
+	cartillapeliculasIngles(peliculas);
 	// Llamada al subproceso horario (almacenará el dato del horario de proyección) 
-	seleccionHoraEspanol();
-	horario(horas);
+	horarioIngles(horas);
 	//Matriz: muestra la numeración de las butacas:
 	butacaIngles();
 	matriz();
 	//llena el arreglo seleccion de butacas
-	llenararreglo(arregloEjemplo,cantidadentradas);
+	llenararregloIngles(arregloEjemplo,cantidadentradas);
 	//muestra el arreglo
 	//mostrar(arregloEjemplo);
 	Limpiar Pantalla;
@@ -476,7 +191,7 @@ SubProceso confirmacionIngles()
 		Escribir "Option 2: NO.";
 		Leer opc;
 		Si opc < 1 O opc > 2 Entonces
-			Escribir "The option entered is incorret. Please, indicate:";
+			Escribir "The option entered is incorrect. Please, indicate:";
 		FinSi
 	Hasta Que opc=1 o opc=2
 	
@@ -506,6 +221,333 @@ SubProceso confirmacionIngles()
 			Escribir "WRONG OPTION.";
 	FinSegun
 FinSubProceso
+//  CODIGO QUE COMPARTEN LOS DOS IDIOMAS
+
+// Porcesos de calculo
+SubProceso edadEspanol(entradamayores Por Referencia,entradamenores Por Referencia,cantidadentradas Por Referencia)
+	//Definir entradas,menores Como Entero;
+	Definir entradas,menores Como Entero;
+	entradaEspanol(entradas,menores);
+	
+	
+	entradamayores<-entradas-menores;
+	//Asigna el valor de la cantidad de entradas para los menores del grupo
+	entradamenores<-menores;
+	//Calcula el total de las entradas
+	cantidadentradas<-entradamayores+entradamenores;
+FinSubProceso
+SubProceso edadIngles(entradamayores Por Referencia,entradamenores Por Referencia,cantidadentradas Por Referencia)
+	//Definir entradas,menores Como Entero;
+	Definir entradas,menores Como Entero;
+	entradaIngles(entradas,menores);
+	entradamayores<-entradas-menores;
+	//Asigna el valor de la cantidad de entradas para los menores del grupo
+	entradamenores<-menores;
+	//Calcula el total de las entradas
+	cantidadentradas<-entradamayores+entradamenores;
+FinSubProceso
+
+//Subproceso: calcula el valor total a pagar por las entradas seleccionadas según las edades
+subProceso tarifa(precio Por Referencia,entradamayores,entradamenores)
+	Definir preciomayor,preciomenor Como Entero;
+	
+	//Calcula el precio total de los mayores del grupo:
+	preciomayor<-entradamayores*200;
+	//Calcula el precio total de los menores del grupo:
+	preciomenor<-entradamenores*150;
+	//Calcula el precio total:
+	precio<-preciomayor+preciomenor;
+	//Muestra en consola el precio total a pagar
+FinSubProceso
+
+
+// hacerlo para ingles
+SubProceso cartillapeliculasEspanol(peliculas Por Referencia)
+	Escribir "";
+	Escribir "¡GRACIAS POR SU CONFIRMACIÓN!";
+	Escribir "";
+	Escribir "Los precios de las entradas son los siguientes:";
+	Escribir "MAYORES DE 18 AÑOS: $200";
+	Escribir "MENORES DE 18 AÑOS $150";
+	Escribir "";
+	Escribir "A CONTINUACIÓN, LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
+	Escribir "Opción 1: SONIC 2 LA PELÍCULA.";
+	Escribir "Opción 2: RÁPIDOS Y FURIOSOS 9.";
+	Escribir "Opción 3: MORBIUS.";
+	Definir num4 Como Entero;
+	Repetir
+		//La variable "Num4" es un selector.
+		Leer num4;
+		Si num4<1 O num4>3 Entonces
+			Escribir Sin Saltar "Opción incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// segun el valor de "num4" se almacena el valor de la pelicula seleccionada en la variable "peliculas"
+			Segun num4 Hacer
+				1:
+					peliculas<-" SONIC 2 LA PELÍCULA.";
+				2:
+					peliculas<-" RÁPIDOS Y FURIOSOS 9.";
+				3:
+					peliculas<-" MORBIUS.";
+			FinSegun
+		FinSi
+	Hasta Que num4>=1 Y num4<=3;
+FinSubProceso
+
+SubProceso cartillapeliculasIngles(peliculas Por Referencia)
+	Escribir "";
+	Escribir "¡THANKS FOR YOUR CONFIRMATION!";
+	Escribir "";
+	Escribir "The ticket prices are as follows:";
+	Escribir "OLDER THAN 18 YEARS OLD: $200";
+	Escribir "YOUNGER THAN 18 YEARS OLD: $150";
+	Escribir "";
+	Escribir "NEXT, WE OFFER YOU THE FOLLOWING MOVIE BILLBOARD: ";
+	Escribir "OPTION 1: SONIC 2 THE MOVIE.";
+	Escribir "OPTION 2: FAST AND FURIOUS 9.";
+	Escribir "OPTION 3: MORBIUS.";
+	Definir num4 Como Entero;
+	Repetir
+		//La variable "Num4" es un selector.
+		Leer num4;
+		Si num4<1 O num4>3 Entonces
+			Escribir Sin Saltar "Wrong choice: Please select again: ";
+		SiNo
+			// segun el valor de "num4" se almacena el valor de la pelicula seleccionada en la variable "peliculas"
+			Segun num4 Hacer
+				1:
+					peliculas<-" SONIC 2 LA PELÍCULA.";
+				2:
+					peliculas<-" RÁPIDOS Y FURIOSOS 9.";
+				3:
+					peliculas<-" MORBIUS.";
+			FinSegun
+		FinSi
+	Hasta Que num4>=1 Y num4<=3;
+FinSubProceso
+
+
+// duplicar ingles
+SubProceso horarioEspanol(horas Por Referencia)
+	//subproceso: permite al usuario seleccionarla hora de proyección del film:
+	Definir jornada Como Entero;
+	Escribir "Por favor, seleccione el horario en el que desea asistir:";
+	Escribir "    1.- 3:00 pm.";
+	Escribir "    2.- 5:00 pm.";
+	Escribir "    3.- 7:00 pm.";
+	Escribir "    4.- 9:00 pm.";
+	
+	Repetir
+		//La variable "jornada" es un selector:
+		Leer jornada;
+		Si jornada<1 O jornada>4 Entonces
+			Escribir Sin Saltar "Opción incorrecta. Por favor, digite nuevamente: ";
+		SiNo
+			// Según el valor jornada, se almacena el dato en la variable "horas":
+			Segun jornada Hacer
+				1:
+					horas<-"3:00 pm.";
+				2:
+					horas<-"5:00 pm.";
+				3:
+					horas<-"7:00 pm.";
+				4:
+					horas<-"9:00 pm.";
+			FinSegun
+		FinSi
+	Hasta Que jornada>=1 Y jornada<=4;
+FinSubProceso
+
+SubProceso horarioIngles(horas Por Referencia)
+	//subproceso: permite al usuario seleccionarla hora de proyección del film:
+	Definir jornada Como Entero;
+	Escribir "Select the time you want to assist, please:";
+	Escribir "    1.- 3:00 pm.";
+	Escribir "    2.- 5:00 pm.";
+	Escribir "    3.- 7:00 pm.";
+	Escribir "    4.- 9:00 pm.";
+	
+	Repetir
+		//La variable "jornada" es un selector:
+		Leer jornada;
+		Si jornada<1 O jornada>4 Entonces
+			Escribir Sin Saltar "Wrong choice. Please, type again: ";
+		SiNo
+			// Según el valor jornada, se almacena el dato en la variable "horas":
+			Segun jornada Hacer
+				1:
+					horas<-"3:00 pm.";
+				2:
+					horas<-"5:00 pm.";
+				3:
+					horas<-"7:00 pm.";
+				4:
+					horas<-"9:00 pm.";
+			FinSegun
+		FinSi
+	Hasta Que jornada>=1 Y jornada<=4;
+FinSubProceso
+
+// Version en ingles
+SubProceso llenararregloEspanol(arreglo Por Referencia,cantidadentradas)
+	Definir i,m1,m Como Entero;
+	Definir v Como Logico;
+	Para m<-0 Hasta cantidadentradas-1 Hacer
+		Repetir
+			v <- Verdadero;
+			Leer m1;
+			
+			Si m1 < 0 O m1 > 49  Entonces
+				// Se salva el error de que la butaca esté fuera de rango
+				v <- Falso;
+				Escribir "El valor ingresado está fuera de rango o está repetido. Por favor, digite nuevamente:";
+			SiNo
+				Si m <> 0 Entonces
+					Para i <- 0 Hasta m-1 Con Paso 1 Hacer
+						Si arreglo[i] = m1 Entonces
+							// Se salva el error de que el número este repetido
+							v <- Falso;
+							Escribir "El valor ingresado está fuera de rango o está repetido. Por favor, digite nuevamente:";
+						FinSi
+					FinPara
+				FinSi
+			FinSi
+			
+			Si v = Verdadero Entonces
+				arreglo[m] <- m1;
+			FinSi
+		Hasta Que v = Verdadero
+	FinPara
+FinSubProceso
+
+SubProceso llenararregloIngles(arreglo Por Referencia,cantidadentradas)
+	Definir i,m1,m Como Entero;
+	Definir v Como Logico;
+	Para m<-0 Hasta cantidadentradas-1 Hacer
+		Repetir
+			v <- Verdadero;
+			Leer m1;
+			
+			Si m1 < 0 O m1 > 49  Entonces
+				// Se salva el error de que la butaca esté fuera de rango
+				v <- Falso;
+				Escribir "The value is out of range or is repeated. Please, try again:";
+			SiNo
+				Si m <> 0 Entonces
+					Para i <- 0 Hasta m-1 Con Paso 1 Hacer
+						Si arreglo[i] = m1 Entonces
+							// Se salva el error de que el número este repetido
+							v <- Falso;
+							Escribir "The value is out of range or is repeated. Please, try again:";
+						FinSi
+					FinPara
+				FinSi
+			FinSi
+			
+			Si v = Verdadero Entonces
+				arreglo[m] <- m1;
+			FinSi
+		Hasta Que v = Verdadero
+	FinPara
+FinSubProceso
+
+
+
+SubProceso matriz()
+	Definir i,j Como Entero;
+	
+	Escribir "";
+	
+	Escribir "";
+	Para i<-0 Hasta 4 Con Paso 1 Hacer
+		Para j<-0 Hasta 9 Con Paso 1 Hacer
+			Escribir sin saltar i;
+			Escribir Sin Saltar j," ";
+		FinPara
+		Escribir "";
+	FinPara
+	Escribir "";
+FinSubProceso
+
+
+//SUBPROCESO PARA SELECCIONAR LAS BUTACAS
+
+SubProceso butacaEspanol()
+	Escribir "Por favor, seleccione la posición de la butaca en la que desea/n ubicarse:";
+FinSubProceso
+
+SubProceso butacaIngles()
+	Escribir "Please, select the position of the seat you want to sit:";
+FinSubProceso
+
+
+//SUBPROCESO DE MENU PARA EL USUARIO
+
+SubProceso menuespanol()
+	Escribir "POR FAVOR, SELECCIONE LA OPERACIÓN QUE DESEA REALIZAR:";
+	Escribir "";
+	Escribir "1. COMPRAR UNA ENTRADA. ";
+	Escribir "2. VER LA CARTELERA. ";
+	Escribir "3. SALIR. ";
+FinSubProceso
+
+SubProceso menuIngles()
+	Escribir "SELECT THE OPERATION YOU WANT TO DO, PLEASE:";
+	Escribir "";
+	Escribir "1. BUY A TICKET. ";
+	Escribir "2. SEE MOVIE BILLBOARD. ";
+	Escribir "3. EXIT. ";
+FinSubProceso
+
+
+//SUBPROCESO PARA MOSTRAR LAS PELICULAS EN CARTELERA
+
+
+SubProceso opcion2CarteleraEspanol()
+	Limpiar Pantalla;
+	Escribir "¡Gracias por su confirmación!";
+	Escribir "";
+	Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
+	Escribir "";
+	Escribir "Opción 1: SONIC 2 LA PELÍCULA.";
+	Escribir "Opción 2: RÁPIDOS Y FURIOSOS 9.";
+	Escribir "Opción 3: MORBIUS.";
+	Escribir " ";
+	Escribir " ";
+FinSubProceso
+
+SubProceso opcion2CarteleraIngles()
+	Limpiar Pantalla;
+	Escribir "¡Thanks for your confirmation!";
+	Escribir "";
+	Escribir "WE OFFER YOU THE FOLLOWING MOVIE BILLBOARD: ";
+	Escribir "";
+	Escribir "Option 1: SONIC 2 THE MOVIE.";
+	Escribir "Option 2: FAST AND FURIOUS 9.";
+	Escribir "Option 3: MORBIUS.";
+	Escribir " ";
+	Escribir " ";
+FinSubProceso
+
+
+// Sub
+
+
+SubProceso entradaEspanol(entradas Por Referencia,menores Por Referencia)
+	Escribir "¿Cuántas entradas desea comprar?";
+	Leer entradas; //Lee el valor total del número de entradas
+	Escribir "¿Hay algún menor de edad? Por favor, digite la cantidad:";
+	Leer menores;//Lee el número de menores en el total de entradas
+	//Calcula la cantidad de entradas para los mayores del grupo
+FinSubProceso
+
+SubProceso entradaIngles(entradas Por Referencia,menores Por Referencia)
+	Escribir "¿How many tickets do you want to buy?";
+	Leer entradas; //Lee el valor total del número de entradas
+	Escribir "¿Is there any younger? Enter the cuantity, please:";
+	Leer menores;//Lee el número de menores en el total de entradas
+	//Calcula la cantidad de entradas para los mayores del grupo
+FinSubProceso
 
 
 //Comentario
@@ -524,9 +566,3 @@ SubProceso mostrarIngles(arreglo,cantidadentradas)
 		Escribir "In seat number: ",arreglo[i];
 	FinPara
 FinSubProceso
-
-
-
-
-
-
