@@ -483,8 +483,6 @@ FinSubProceso
 
 SubProceso opcion2CarteleraEspanol()
 	Limpiar Pantalla;
-	Escribir "¡Gracias por su confirmación!";
-	Escribir "";
 	Escribir "LE OFRECEMOS LA SIGUIENTE CARTELERA: ";
 	Escribir "";
 	Escribir "Opción 1: SONIC 2 LA PELÍCULA.";
@@ -496,8 +494,6 @@ FinSubProceso
 
 SubProceso opcion2CarteleraIngles()
 	Limpiar Pantalla;
-	Escribir "¡Thanks for your confirmation!";
-	Escribir "";
 	Escribir "WE OFFER YOU THE FOLLOWING MOVIE BILLBOARD: ";
 	Escribir "";
 	Escribir "Option 1: SONIC 2 THE MOVIE.";
